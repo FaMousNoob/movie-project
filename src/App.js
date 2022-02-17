@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { mainRoutes } from './configs/routes.configs';
 // import Home from './modules/main/pages/home/home.component';
 import MainTemplate from './modules/main/templates/main.templates';
-import './app.css';
+import './App.css';
 
 function App() {
   const renderMainRoutes = () =>
