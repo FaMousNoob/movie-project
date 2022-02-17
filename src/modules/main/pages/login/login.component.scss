@@ -1,0 +1,60 @@
+@import '../../../../assets/scss/default';
+
+.loginComponent {
+  color: $fontLight;
+  text-align: left;
+
+  p {
+    padding: 15px 0;
+    font-size: 0.815rem;
+    line-height: 1.3rem;
+  }
+
+  .formLogin {
+    input {
+      display: block;
+      margin: 14px auto;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      height: 40px;
+      box-sizing: border-box;
+      font-size: 14px;
+      border: 1px solid #ced0da;
+      color: $fontDark;
+      padding: 10px;
+      &:focus {
+        border: 1px solid $fontLight;
+      }
+
+      &::placeholder {
+        color: $fontLight;
+        font-weight: 400;
+      }
+    }
+
+    .loginSubmit {
+      margin: 10px 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding: 10px;
+      background-color: $secondary;
+      text-decoration: none;
+      line-height: 1;
+      width: 100%;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .loginComponent {
+    .formLogin {
+      .loginSubmit {
+        padding: 15px;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+@import '../../../../assets/scss/default';
+
+.activeDropDown {
+  position: absolute;
+  text-align: right;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  background-color: #fff;
+}
+.activeUlDrop {
+  display: normal;
+}
+
+.deactiveUlDrop {
+  display: none;
+}
+
+.myNavbar {
+  display: flex;
+  justify-content: space-between;
+  .logoContain {
+    padding: 10px 15px;
+    width: 125px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .navbarRight {
+    display: flex;
+    align-items: flex-start;
+    .navLogin {
+      font-weight: 400;
+      padding: 15px 0;
+      color: $fontLight;
+    }
+    .dropDownMenu {
+      button .NavBtn {
+        padding: 10px 15px;
+        font-size: 1.6rem;
+        color: $fontLight;
+        margin: 5px;
+        z-index: 1;
+      }
+
+      ul {
+        li {
+          text-decoration: none;
+          color: $fontLight;
+          margin: 20px;
+          .navLink {
+            display: inline-block;
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 5px 0;
+            color: $fontLight;
+            text-decoration: none;
+            transition: all 0.3s;
+            &:hover {
+              color: $secondary;
+            }
+          }
+        }
+        input {
+          padding: 6px 25px 6px 10px;
+          transition: width 0.3s;
+          width: 250px;
+          border: 1px solid #ced0da;
+          &:focus {
+            border: 1px solid $fontLight;
+          }
+          &::placeholder {
+            color: $fontLight;
+          }
+        }
+        .searchMovieInput {
+          position: relative;
+
+          .magnifying {
+            color: $fontLight;
+            padding: 7px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .myNavbar {
+    .logoContain {
+      width: 250px;
+    }
+  }
+}

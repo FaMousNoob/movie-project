@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { mainRoutes } from './configs/routes.configs';
+// import Home from './modules/main/pages/home/home.component';
+import MainTemplate from './modules/main/templates/main.templates';
+import './app.css';
 
 function App() {
+  const renderMainRoutes = () =>
+    mainRoutes.map((route, index) => {
+      const { path, Element } = route;
+      return (
+        <Route
+          key={index}
+          path={path}
+          element={<MainTemplate children={<Element />} />}
+        />
+      );
+    });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          {renderMainRoutes()}
+          <Route path='*' element={<Navigate to='/' />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

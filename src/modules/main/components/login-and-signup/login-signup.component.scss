@@ -1,0 +1,111 @@
+@import '../../../../assets/scss/default';
+
+.isShow {
+  display: block;
+  opacity: 1;
+}
+
+.isNotShow {
+  display: none;
+  opacity: 0;
+}
+
+.loginContain {
+  transition: all 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.showLoginTitle {
+  top: 10px;
+}
+.notShowLoginTitle {
+  top: -100%;
+}
+
+.loginTitle {
+  transition: all 0.5s;
+  z-index: 1;
+  padding: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 95%;
+  max-width: 520px;
+  height: fit-content;
+  background-color: #ffff;
+
+  .loginBtns {
+    color: $fontLight;
+    span {
+      margin: 0 20px;
+      font-size: 1.125rem;
+    }
+
+    .loginSignUpBtn {
+      color: $fontLight;
+      padding: 10px 0;
+      font-size: 1.125rem;
+
+      &::after {
+        margin: 0 auto;
+        transition: all 0.5s;
+        display: block;
+        content: '';
+        background: $secondary;
+        height: 2.5px;
+        width: 0;
+        margin-top: 10px;
+      }
+
+      &:hover {
+        color: $secondary;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    .isActive {
+      color: $secondary;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .loginX {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    .xFont {
+      color: $fontLight;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (min-width: $ipadWidth) {
+  .loginTitle {
+    .loginBtns span {
+      font-size: 1.75rem;
+    }
+
+    .loginBtns {
+      .loginSignUpBtn {
+        font-size: 1.75rem;
+      }
+    }
+    .loginX {
+      .xFont {
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
