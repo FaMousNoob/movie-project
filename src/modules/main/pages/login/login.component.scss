@@ -50,6 +50,9 @@
 
 @media screen and(min-width: $ipadWidth) {
   .loginComponent {
+    p {
+      font-size: 0.875rem;
+    }
     .formLogin {
       .loginSubmit {
         padding: 15px;

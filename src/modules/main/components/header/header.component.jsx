@@ -23,7 +23,7 @@ function Header(props) {
 
   return (
     <section>
-      <div className='myNavbar'>
+      <div className='myNavbar container concainer-lg'>
         <div className='logoContain'>
           <a href='/'>
             <img
@@ -37,6 +37,13 @@ function Header(props) {
             />
           </a>
         </div>
+        <div className='mainSearchMovie'>
+          <FontAwesomeIcon
+            icon={solid('magnifying-glass')}
+            className='magnifying'
+          />
+          <input type='text' placeholder='Tìm tên phim' />
+        </div>
         <div className='navbarRight'>
           <button className='navLogin' onClick={() => props.onClick()}>
             <FontAwesomeIcon icon={solid('user')} />
@@ -49,11 +56,13 @@ function Header(props) {
             }>
             <button onClick={handleDropDown}>
               {activeDropDown.isTrueOrNot ? (
-                <FontAwesomeIcon icon={solid('xmark')} className='NavBtn' />
+                <FontAwesomeIcon
+                  icon={solid('xmark')}
+                  className='NavBtn xMark'
+                />
               ) : (
                 <FontAwesomeIcon icon={solid('bars')} className='NavBtn' />
               )}
-              {/* <FontAwesomeIcon icon={solid('bars')} className='NavBtn' /> */}
             </button>
             <ul
               className={
@@ -74,7 +83,6 @@ function Header(props) {
                 </NavLink>
               </li>
               <li>
-                {' '}
                 <NavLink className='navLink' to='/movie'>
                   PHIM
                 </NavLink>
@@ -88,6 +96,23 @@ function Header(props) {
           </div>
         </div>
       </div>
+      <ul className='navLinkWindowScreen'>
+        <li>
+          <NavLink className='navLink1' to='/booking'>
+            MUA VÉ
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className='navLink2' to='/movie'>
+            PHIM
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className='navLink3' to='/ticket-price'>
+            RẠP/GIÁ VÉ
+          </NavLink>
+        </li>
+      </ul>
     </section>
   );
 }

@@ -19,7 +19,8 @@ function LoginSignUp(props) {
       <section
         onClick={() => props.onClick()}
         className={
-          'loginContain ' + (props.loginSignUpState ? 'isShow' : 'isNotShow')
+          'loginContain ' +
+          (props.loginSignUpState ? 'isShowTitleLogin' : 'NotShowTitleLogin')
         }></section>
       <div
         className={

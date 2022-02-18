@@ -1,5 +1,32 @@
 @import '../../../../assets/scss/default';
 
+.extendingInput {
+  position: relative;
+  input {
+    padding: 6px 25px 6px 10px;
+    transition: width 0.3s;
+    width: 250px;
+    border: 1px solid #ced0da;
+    &:focus {
+      border: 1px solid $fontLight;
+    }
+    &::placeholder {
+      color: $fontLight;
+    }
+  }
+
+  .magnifying {
+    color: $fontLight;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .activeDropDown {
   position: absolute;
   text-align: right;
@@ -19,31 +46,47 @@
 .myNavbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   .logoContain {
-    padding: 10px 15px;
-    width: 125px;
+    padding: 10px 0;
+    width: 7.81rem;
+    a {
+      display: block;
+    }
     img {
       width: 100%;
     }
   }
 
+  .mainSearchMovie {
+    display: none;
+    @extend .extendingInput;
+  }
+
   .navbarRight {
+    z-index: 1;
+
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     .navLogin {
       font-weight: 400;
       padding: 15px 0;
       color: $fontLight;
+      transition: color 0.3s;
+      &:hover {
+        color: $secondary;
+      }
     }
     .dropDownMenu {
       button .NavBtn {
         padding: 10px 15px;
         font-size: 1.6rem;
         color: $fontLight;
-        margin: 5px;
-        z-index: 1;
+        z-index: 999;
       }
-
+      button .xMark {
+        font-size: 2rem;
+      }
       ul {
         li {
           text-decoration: none;
@@ -63,41 +106,104 @@
             }
           }
         }
-        input {
-          padding: 6px 25px 6px 10px;
-          transition: width 0.3s;
-          width: 250px;
-          border: 1px solid #ced0da;
-          &:focus {
-            border: 1px solid $fontLight;
-          }
-          &::placeholder {
-            color: $fontLight;
-          }
-        }
-        .searchMovieInput {
-          position: relative;
 
-          .magnifying {
-            color: $fontLight;
-            padding: 7px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            &:hover {
-              cursor: pointer;
-            }
-          }
+        .searchMovieInput {
+          margin-right: 20px;
+          @extend .extendingInput;
         }
       }
     }
   }
 }
 
+.navLinkWindowScreen {
+  display: none;
+}
+
 @media screen and(min-width: $ipadWidth) {
   .myNavbar {
     .logoContain {
       width: 250px;
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .myNavbar {
+    .logoContain {
+      width: 350px;
+    }
+    .mainSearchMovie {
+      display: block;
+    }
+  }
+}
+
+@media screen and(min-width: $windowWidth) {
+  .myNavbar {
+    .logoContain {
+      width: 430px;
+    }
+
+    .mainSearchMovie {
+      margin-right: 200px;
+    }
+
+    .navbarRight {
+      .navLogin {
+        margin-right: 40px;
+      }
+
+      .dropDownMenu button {
+        display: none;
+      }
+    }
+  }
+  .navLinkWindowScreen {
+    display: block;
+    background-color: $primaryDark;
+    text-align: center;
+    li {
+      // padding: 10px 20px;
+      display: inline-block;
+      .extendingSomething::before {
+        box-sizing: border-box;
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        display: inline-block;
+        width: 1px;
+        height: 15px;
+        background: white;
+      }
+
+      .extendingNavLink {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        padding: 15.5px 0;
+        font-size: 0.94rem;
+        width: 175px;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s;
+        &:hover {
+          color: $secondary;
+        }
+      }
+      .navLink1 {
+        @extend .extendingNavLink;
+        @extend .extendingSomething;
+      }
+      .navLink2 {
+        @extend .extendingNavLink;
+        @extend .extendingSomething;
+      }
+      .navLink3 {
+        @extend .extendingNavLink;
+      }
     }
   }
 }
