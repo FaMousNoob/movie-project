@@ -1,0 +1,37 @@
+@import '../../../../assets/scss/_default.scss';
+.movieDetailContain {
+  margin-top: 50px;
+  .movieDetailPicContain {
+    text-align: center;
+    .btnPicBox {
+      position: relative;
+      button {
+        transition: background 0.3s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        font-size: 2.5rem;
+        padding-left: 5px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+
+  .movieInfo {
+    margin-top: 15px;
+    h2 {
+      font-size: 1.125rem;
+      font-size: $fontDark;
+    }
+  }
+}
