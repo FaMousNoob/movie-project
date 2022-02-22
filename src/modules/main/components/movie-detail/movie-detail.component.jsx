@@ -24,7 +24,7 @@ function MovieDetail() {
 
   useEffect(() => {
     dispatch(getMovieDetailAction(id));
-  }, []);
+  }, [dispatch, id]);
 
   const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
   const handleRenderSideBar = () => {

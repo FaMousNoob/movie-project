@@ -2,7 +2,6 @@ import React from 'react';
 import './hot-movie.component.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import MovieDetail from '../../../components/movie-detail/movie-detail.component';
 
 function HotMovieHome() {
   const movieList = useSelector((state) => state.movie.movieList);
