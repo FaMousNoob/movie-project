@@ -8,10 +8,13 @@ import './babel.config';
 // BOOTSTRAP
 import '../node_modules/bootstrap/dist/js/bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-
+import { Provider } from 'react-redux';
+import { store } from './store/index';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,57 +2,57 @@ import React, { useState } from 'react';
 import './carousel.component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import PopUpTrailer from '../../../components/pop-up-trailer/pop-up-trailer.component';
 
 function CarouselHome() {
-  const [popUptraler, setpopUptraler] = useState({ isTrueOrNot: false });
+  const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
   const [currentTrailer, setcurrentTrailer] = useState({
-    title: '',
-    urlYoutube: '',
+    id: 0,
+    tenPhim: '',
+    img: '',
+    trailer: '',
   });
+
+  const handleTrailer = (value) => {
+    setshowTrailer({ isTrueOrNot: value });
+  };
+
+  const handleCurrentTrailer = (trailer) => {
+    setcurrentTrailer({ trailer });
+  };
+
   const carouselData = [
     {
       id: 0,
-      title: 'chuyện Ma Gần Nhà',
+      tenPhim: 'chuyện Ma Gần Nhà',
       img: './img/chuyen-ma-gan-nha.jpg',
-      urlYoutube: 'https://www.youtube.com/embed/iPPNEYMEO7M',
+      trailer: 'https://www.youtube.com/embed/iPPNEYMEO7M',
     },
     {
       id: 1,
-      title: 'Death Of The Nile',
+      tenPhim: 'Death Of The Nile',
       img: './img/an-mang-tren-song-nile.jpg',
-      urlYoutube: 'https://www.youtube.com/embed/vjqcipRSARg',
+      trailer: 'https://www.youtube.com/embed/vjqcipRSARg',
     },
     {
       id: 2,
-      title: 'Moonfall',
+      tenPhim: 'Moonfall',
       img: './img/moon-fall.jpg',
-      urlYoutube: 'https://www.youtube.com/embed/grjSTCfYLG8',
+      trailer: 'https://www.youtube.com/embed/grjSTCfYLG8',
     },
     {
       id: 3,
-      title: 'House Of Gucci',
+      tenPhim: 'House Of Gucci',
       img: './img/house-of-gucci.jpg',
-      urlYoutube: 'https://www.youtube.com/embed/y2AweBD1RSc',
+      trailer: 'https://www.youtube.com/embed/y2AweBD1RSc',
     },
     {
       id: 4,
-      title: 'Spider-Man No Way Home',
+      tenPhim: 'Spider-Man No Way Home',
       img: './img/spiderman-nwh.jpg',
-      urlYoutube: 'https://www.youtube.com/embed/JfVOs4VSpmA',
+      trailer: 'https://www.youtube.com/embed/JfVOs4VSpmA',
     },
   ];
-
-  const handleTrailer = (value) => {
-    setpopUptraler({ ...popUptraler, isTrueOrNot: value });
-  };
-
-  const handleCurrentTrailer = (title, urlYoutube) => {
-    setcurrentTrailer({
-      ...currentTrailer,
-      title: title,
-      urlYoutube: urlYoutube,
-    });
-  };
 
   const renderCarouselBtn = () =>
     carouselData.map((btn, index) => (
@@ -70,14 +70,14 @@ function CarouselHome() {
       <div
         key={index}
         className={
-          'carousel-item carouselImgContain ' + (each.id === 0 ? 'active' : '')
+          'carousel-item carouselImgBox ' + (each.id === 0 ? 'active' : '')
         }>
         <img src={each.img} className='d-block w-100' alt='trailer' />
         <button
           className='carouselBtn'
           onClick={() => {
             handleTrailer(true);
-            handleCurrentTrailer(each.title, each.urlYoutube);
+            handleCurrentTrailer(each);
           }}>
           <FontAwesomeIcon icon={solid('play')} className='playVideoCarousel' />
         </button>
@@ -94,7 +94,11 @@ function CarouselHome() {
         <div className='carousel-indicators' id='carousel-indicators'>
           {renderCarouselBtn()}
         </div>
-        <div className='carousel-inner'>{renderCarouselPic()}</div>
+        <div className='carousel-inner position-relative'>
+          {renderCarouselPic()}
+
+          {/* <QuickBuyTicket /> */}
+        </div>
         <button
           className='carousel-control-prev carouselNextPreviousBtn'
           type='button'
@@ -112,38 +116,11 @@ function CarouselHome() {
           <span className='visually-hidden'>Next</span>
         </button>
       </div>
-      <div
-        onClick={() => {
-          handleTrailer(false);
-          handleCurrentTrailer('', '');
-        }}
-        className={
-          'blankBackground ' +
-          (popUptraler.isTrueOrNot ? 'onTrailer' : 'offTrailer')
-        }></div>
-      <div
-        className={
-          'ytbLink ' + (popUptraler.isTrueOrNot ? 'onTrailer' : 'offTrailer')
-        }>
-        <div className='ytbTitle'>
-          <p>{currentTrailer.title}</p>
-          <button
-            onClick={() => {
-              handleTrailer(false);
-              handleCurrentTrailer('', '');
-            }}>
-            <FontAwesomeIcon icon={solid('xmark')} className='ytbXmark' />
-          </button>
-        </div>
-        <div className='ytbLinkWrapper'>
-          <iframe
-            src={currentTrailer.urlYoutube}
-            title='YouTube video player'
-            frameBorder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowFullScreen></iframe>
-        </div>
-      </div>
+      <PopUpTrailer
+        onClick={() => handleTrailer(false)}
+        showTrailer={showTrailer.isTrueOrNot}
+        trailer={currentTrailer}
+      />
     </div>
   );
 }

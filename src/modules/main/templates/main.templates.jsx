@@ -11,7 +11,6 @@ function MainTemplate({ children }) {
 
   const handleLoginSignUp = (value) => {
     setactiveLoginSignUpState({ ...loginSignUpState, activeOrNot: value });
-    console.log(loginSignUpState.activeOrNot);
   };
 
   return (
