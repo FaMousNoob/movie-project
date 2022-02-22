@@ -29,8 +29,8 @@ function Header(props) {
             <img
               src={
                 windowWidth < 768
-                  ? './img/galaxy-logo-mobile.png'
-                  : './img/galaxy-logo.png'
+                  ? '/images/galaxy-logo-mobile.png'
+                  : '/images/galaxy-logo.png'
               }
               alt='logo'
               className='navLogo'

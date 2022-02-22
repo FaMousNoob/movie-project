@@ -1,10 +1,16 @@
 @import '../../../../assets/scss/_default.scss';
 .movieDetailContain {
   margin-top: 50px;
+
   .movieDetailPicContain {
     text-align: center;
     .btnPicBox {
       position: relative;
+
+      img {
+        min-width: 75%;
+        min-height: 325px;
+      }
       button {
         transition: background 0.3s;
         position: absolute;
@@ -29,9 +35,32 @@
 
   .movieInfo {
     margin-top: 15px;
+    color: $fontDark;
     h2 {
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      font-weight: 400;
       font-size: 1.125rem;
-      font-size: $fontDark;
+    }
+    h4 {
+      margin-top: 20px;
+      line-height: 2rem;
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding-bottom: 10px;
+
+      &::after {
+        display: block;
+        content: '';
+        height: 2px;
+        width: 50%;
+        background-color: $secondary;
+      }
+    }
+    p {
+      text-align: justify;
+      font-size: 0.875rem;
     }
   }
 }

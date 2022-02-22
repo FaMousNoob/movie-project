@@ -25,31 +25,31 @@ function CarouselHome() {
     {
       id: 0,
       tenPhim: 'chuyện Ma Gần Nhà',
-      img: './img/chuyen-ma-gan-nha.jpg',
+      img: '/images/chuyen-ma-gan-nha.jpg',
       trailer: 'https://www.youtube.com/embed/iPPNEYMEO7M',
     },
     {
       id: 1,
       tenPhim: 'Death Of The Nile',
-      img: './img/an-mang-tren-song-nile.jpg',
+      img: '/images/an-mang-tren-song-nile.jpg',
       trailer: 'https://www.youtube.com/embed/vjqcipRSARg',
     },
     {
       id: 2,
       tenPhim: 'Moonfall',
-      img: './img/moon-fall.jpg',
+      img: '/images/moon-fall.jpg',
       trailer: 'https://www.youtube.com/embed/grjSTCfYLG8',
     },
     {
       id: 3,
       tenPhim: 'House Of Gucci',
-      img: './img/house-of-gucci.jpg',
+      img: '/images/house-of-gucci.jpg',
       trailer: 'https://www.youtube.com/embed/y2AweBD1RSc',
     },
     {
       id: 4,
       tenPhim: 'Spider-Man No Way Home',
-      img: './img/spiderman-nwh.jpg',
+      img: '.images/spiderman-nwh.jpg',
       trailer: 'https://www.youtube.com/embed/JfVOs4VSpmA',
     },
   ];

@@ -35,18 +35,24 @@ function MovieDetail() {
   return (
     <section className=' container movieDetailContain'>
       <div className='row'>
-        <div className='col-md-8 row'>
-          <div className='col-lg-4 movieDetailPicContain'>
-            <div className='btnPicBox'>
-              <img src={trailer.hinhAnh} alt='movieDetail' />
-              <button onClick={() => handleTrailer(true)}>
-                <FontAwesomeIcon icon={solid('play')} />
-              </button>
+        <div className='col-md-8 movieDetailWrapper'>
+          <div className='row'>
+            <div className='col-lg-4 movieDetailPicContain'>
+              <div className='btnPicBox'>
+                <img src={trailer.hinhAnh} alt='' className='skeleton' />
+                <button onClick={() => handleTrailer(true)}>
+                  <FontAwesomeIcon icon={solid('play')} />
+                </button>
+              </div>
+            </div>
+            <div className='col-lg-8 movieInfo'>
+              <h2>{trailer.tenPhim}</h2>
+              <h4>NỘI DUNG PHIM</h4>
+              <p>{trailer.moTa}</p>
             </div>
           </div>
-
-          <div className='col-lg-8 movieInfo'>
-            <h2>{trailer.tenPhim}</h2>
+          <div className='showTimes'>
+            <h3>LỊCH CHIẾU</h3>
           </div>
         </div>
         {windowWidth >= 768 ? <div className='col-md-4'>sidebar</div> : ''}

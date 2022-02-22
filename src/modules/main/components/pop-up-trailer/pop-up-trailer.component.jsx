@@ -20,7 +20,7 @@ function PopUpTrailer(props) {
           {trailer ? (
             <p>{showTrailer ? trailer.trailer.tenPhim : ' '}</p>
           ) : (
-            <p className='popUpSkeleton'></p>
+            <p className='skeleton'></p>
           )}
 
           <button
@@ -32,7 +32,7 @@ function PopUpTrailer(props) {
         </div>
         <div className='ytbLinkWrapper'>
           <iframe
-            className='popUpSkeleton'
+            className='skeleton'
             src={showTrailer ? trailer.trailer.trailer : ''}
             title='YouTube video player'
             frameBorder='0'
