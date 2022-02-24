@@ -104,7 +104,7 @@ function ShowTimes() {
   };
 
   const rendershowtime = () => {
-    return lichChieu?.forEach((cinema, index) => {
+    return lichChieu?.map((cinema, index) => {
       const ngayChieu = dateFormat(
         'dd/MM/yyyy',
         new Date(cinema.ngayChieuGioChieu)
@@ -118,6 +118,7 @@ function ShowTimes() {
       ) {
         return <button key={index}>{gioChieu}</button>;
       }
+      return false;
     });
   };
 
