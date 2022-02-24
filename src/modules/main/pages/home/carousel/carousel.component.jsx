@@ -49,7 +49,7 @@ function CarouselHome() {
     {
       id: 4,
       tenPhim: 'Spider-Man No Way Home',
-      img: '.images/spiderman-nwh.jpg',
+      img: '/images/spiderman-nwh.jpg',
       trailer: 'https://www.youtube.com/embed/JfVOs4VSpmA',
     },
   ];

@@ -5,6 +5,7 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './pop-up-trailer.component.scss';
 
 function PopUpTrailer(props) {
+  console.log(props);
   const { trailer, showTrailer } = props;
   return (
     <div>
@@ -33,7 +34,7 @@ function PopUpTrailer(props) {
         <div className='ytbLinkWrapper'>
           <iframe
             className='skeleton'
-            src={showTrailer ? trailer.trailer.trailer : ''}
+            src={showTrailer ? trailer.trailer.trailer : console.log('failing')}
             title='YouTube video player'
             frameBorder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

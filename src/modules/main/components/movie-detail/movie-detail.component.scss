@@ -5,11 +5,13 @@
   .movieDetailPicContain {
     text-align: center;
     .btnPicBox {
+      box-sizing: border-box;
       position: relative;
 
       img {
-        min-width: 75%;
-        min-height: 325px;
+        max-width: 75%;
+        height: 325px;
+        // max-width: %;
       }
       button {
         transition: background 0.3s;
@@ -36,6 +38,24 @@
   .movieInfo {
     margin-top: 15px;
     color: $fontDark;
+    .danhGia {
+      .fontStar {
+        color: rgb(255, 225, 0);
+      }
+
+      p {
+        padding: 5px;
+        font-weight: 500;
+        display: inline-block;
+        color: $fontLight;
+        font-size: 0.75rem;
+        span {
+          font-size: 0.875rem;
+          color: $fontDark;
+        }
+      }
+    }
+
     h2 {
       line-height: 1.6rem;
       text-transform: uppercase;
@@ -43,7 +63,7 @@
       font-size: 1.125rem;
     }
     h4 {
-      margin-top: 20px;
+      margin-top: 10px;
       line-height: 2rem;
       display: inline-block;
       font-size: 0.875rem;
@@ -64,3 +84,13 @@
     }
   }
 }
+
+// @media screen and(min-width: $ipadWidth) {
+//   .movieDetailContain {
+//     .movieDetailPicContain {
+//       .btnPicBox {
+//         img
+//       }
+//     }
+//   }
+// }

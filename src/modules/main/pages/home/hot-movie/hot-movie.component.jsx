@@ -13,9 +13,8 @@ function HotMovieHome() {
         <Link to={`/movie-detail/${movie.maPhim}`}>
           <div className='hotMoviePic'>
             <img src={movie.hinhAnh} alt='' />
-            <div className='hotMovieBtn'>
-              <button>MUA VÉ</button>
-            </div>
+
+            <button>MUA VÉ</button>
           </div>
         </Link>
 

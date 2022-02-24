@@ -7,26 +7,27 @@ import PopUpTrailer from '../pop-up-trailer/pop-up-trailer.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './movie-detail.component.scss';
+import ShowTimes from './showTimes/showTimes.component';
 
 function MovieDetail() {
+  const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
+
+  const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
   const trailer = useSelector((state) => state.movie.movieDetail);
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(trailer);
-
-  const newMovieDetail = { trailer };
-
-  const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
-
-  const handleTrailer = (value) => {
-    setshowTrailer({ isTrueOrNot: value });
-  };
 
   useEffect(() => {
     dispatch(getMovieDetailAction(id));
   }, [dispatch, id]);
 
-  const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
+  const newMovieDetail = { trailer };
+
+  const handleTrailer = (value) => {
+    setshowTrailer({ isTrueOrNot: value });
+  };
+
+  //detect window size change
   const handleRenderSideBar = () => {
     setwindowWidth(window.innerWidth);
   };
@@ -47,13 +48,18 @@ function MovieDetail() {
             </div>
             <div className='col-lg-8 movieInfo'>
               <h2>{trailer.tenPhim}</h2>
+              <div className='danhGia'>
+                <FontAwesomeIcon icon={solid('star')} className='fontStar' />
+                <p>
+                  <span>{trailer.danhGia}</span>/{trailer.danhGia}
+                </p>
+              </div>
+
               <h4>NỘI DUNG PHIM</h4>
               <p>{trailer.moTa}</p>
             </div>
           </div>
-          <div className='showTimes'>
-            <h3>LỊCH CHIẾU</h3>
-          </div>
+          <ShowTimes />
         </div>
         {windowWidth >= 768 ? <div className='col-md-4'>sidebar</div> : ''}
       </div>
