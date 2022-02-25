@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getMovieDetailAction } from '../../../../store/actions/movie.actions';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import {
+  getMovieDetailAction,
+  getMovieListAction,
+} from '../../../../store/actions/movie.actions';
 import PopUpTrailer from '../pop-up-trailer/pop-up-trailer.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -14,14 +17,19 @@ function MovieDetail() {
 
   const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
   const trailer = useSelector((state) => state.movie.movieDetail);
+  const { movieList } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
+  console.log(trailer);
+
+  // extend variable to sync data with other component to render popUpTrailer
+  const newMovieDetail = { trailer };
 
   useEffect(() => {
     dispatch(getMovieDetailAction(id));
+    dispatch(getMovieListAction());
   }, [dispatch, id]);
-
-  const newMovieDetail = { trailer };
 
   const handleTrailer = (value) => {
     setshowTrailer({ isTrueOrNot: value });
@@ -40,14 +48,24 @@ function MovieDetail() {
           <div className='row'>
             <div className='col-lg-4 movieDetailPicContain'>
               <div className='btnPicBox'>
-                <img src={trailer.hinhAnh} alt='' className='skeleton' />
+                {trailer?.maPhim === parseInt(id) ? (
+                  <img src={trailer.hinhAnh} alt='' />
+                ) : (
+                  <div className='loadingMovie skeleton'></div>
+                )}
                 <button onClick={() => handleTrailer(true)}>
                   <FontAwesomeIcon icon={solid('play')} />
                 </button>
               </div>
             </div>
             <div className='col-lg-8 movieInfo'>
-              <h2>{trailer.tenPhim}</h2>
+              <h2>
+                {trailer?.maPhim === parseInt(id) ? (
+                  trailer.tenPhim
+                ) : (
+                  <div className='skeleton'></div>
+                )}
+              </h2>
               <div className='danhGia'>
                 <FontAwesomeIcon icon={solid('star')} className='fontStar' />
                 <p>
@@ -56,12 +74,52 @@ function MovieDetail() {
               </div>
 
               <h4>NỘI DUNG PHIM</h4>
-              <p>{trailer.moTa}</p>
+              <p className='noiDung'>
+                {trailer?.maPhim === parseInt(id) ? (
+                  trailer.moTa
+                ) : (
+                  <span>
+                    <span className='skeleton'></span>
+                    <span className='skeleton'></span>
+                    <span className='skeleton'></span>
+                    <span className='skeleton'></span>
+                  </span>
+                )}
+              </p>
             </div>
           </div>
-          <ShowTimes />
+          {trailer?.maPhim === parseInt(id) ? <ShowTimes /> : ''}
         </div>
-        {windowWidth >= 768 ? <div className='col-md-4'>sidebar</div> : ''}
+        {windowWidth >= 768 ? (
+          trailer?.maPhim === parseInt(id) ? (
+            <div className='col-md-4 sideMovies'>
+              <h3>PHIM ĐANG CHIẾU</h3>
+              <div className='sideMoviesContain'>
+                {movieList?.slice(0, 6).map((movie, index) => (
+                  <div key={index} className='moviesEach'>
+                    <Link to={`/movie-detail/${movie.maPhim}`}>
+                      <img src={movie.hinhAnh} alt='' />
+                    </Link>
+                    <p>{movie.tenPhim}</p>
+                  </div>
+                ))}
+              </div>
+              <div className='containXemThem'>
+                <button onClick={() => navigate('/movie')}>
+                  XEM THÊM
+                  <FontAwesomeIcon
+                    icon={solid('arrow-right-long')}
+                    className='arrowRight'
+                  />
+                </button>
+              </div>
+            </div>
+          ) : (
+            ''
+          )
+        ) : (
+          ''
+        )}
       </div>
       <PopUpTrailer
         onClick={() => handleTrailer(false)}
@@ -73,5 +131,3 @@ function MovieDetail() {
 }
 
 export default MovieDetail;
-
-/* <button onClick={() => handleTrailer(true)}>open pop up trailer</button>*/

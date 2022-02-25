@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './login.component.scss';
 
 function Login() {
@@ -6,9 +5,6 @@ function Login() {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log('mouting');
-  }, []);
   return (
     <section className='loginComponent'>
       <p>

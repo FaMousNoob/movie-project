@@ -55,11 +55,13 @@
         margin: 0;
       }
       .bookBox {
+        display: flex;
+        align-items: center;
         font-size: 0.875rem;
         padding: 20px 20px;
 
         button {
-          margin: 0 10px 10px 0;
+          margin: 10px 10px 10px 0;
           transition: all 0.3s;
           padding: 0 10px;
           border: 1px solid $fontLight;
@@ -68,6 +70,39 @@
             color: $secondary;
             border: 1px solid $secondary;
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .showTimes {
+    h3 {
+      font-size: 1.15rem;
+    }
+    .selectContain {
+      display: flex;
+      justify-content: space-between;
+      .middleSelect {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .showTimes {
+    padding-top: 50px;
+    .cinema {
+      h4 {
+        font-size: 1.15rem;
+      }
+      .cinemaBook {
+        .bookBox,
+        p {
+          font-size: 1rem;
         }
       }
     }

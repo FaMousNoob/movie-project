@@ -77,17 +77,17 @@ function Header(props) {
                   />
                 </div>
               </li>
-              <li>
+              <li onClick={handleDropDown}>
                 <NavLink className='navLink' to='/booking'>
                   MUA VÉ
                 </NavLink>
               </li>
-              <li>
+              <li onClick={handleDropDown}>
                 <NavLink className='navLink' to='/movie'>
                   PHIM
                 </NavLink>
               </li>
-              <li>
+              <li onClick={handleDropDown}>
                 <NavLink className='navLink' to='/ticket-price'>
                   RẠP/GIÁ VÉ
                 </NavLink>

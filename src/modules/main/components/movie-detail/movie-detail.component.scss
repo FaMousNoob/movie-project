@@ -7,11 +7,16 @@
     .btnPicBox {
       box-sizing: border-box;
       position: relative;
+      display: inline-block;
+      width: 65%;
+      height: 100%;
 
       img {
-        max-width: 75%;
-        height: 325px;
-        // max-width: %;
+        width: 100%;
+      }
+      .loadingMovie {
+        width: 100%;
+        height: 350px;
       }
       button {
         transition: background 0.3s;
@@ -38,6 +43,7 @@
   .movieInfo {
     margin-top: 15px;
     color: $fontDark;
+
     .danhGia {
       .fontStar {
         color: rgb(255, 225, 0);
@@ -61,6 +67,10 @@
       text-transform: uppercase;
       font-weight: 400;
       font-size: 1.125rem;
+      div {
+        width: 70%;
+        height: 20px;
+      }
     }
     h4 {
       margin-top: 10px;
@@ -78,19 +88,156 @@
         background-color: $secondary;
       }
     }
-    p {
+    .noiDung {
       text-align: justify;
       font-size: 0.875rem;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 10px;
+        margin: 5px 0;
+      }
+    }
+  }
+
+  .sideMovies {
+    h3 {
+      line-height: 2.5rem;
+      display: inline-block;
+      font-size: 1.13rem;
+      &::after {
+        display: block;
+        content: '';
+        height: 2px;
+        width: 40%;
+        background-color: $secondary;
+      }
+    }
+
+    .sideMoviesContain {
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+      .moviesEach {
+        height: 100%;
+        text-decoration: none;
+        color: $fontDark;
+      }
+
+      img {
+        height: 72%;
+        width: 100%;
+      }
+
+      p {
+        height: 28%;
+        display: block;
+        margin: 0;
+        font-size: 0.875rem;
+        // color: ?;
+      }
+    }
+  }
+
+  .containXemThem {
+    text-align: right;
+    font-size: 0.75rem;
+
+    button,
+    .arrowRight {
+      color: $secondary;
+    }
+
+    button {
+      border: 1px solid $secondary;
+      padding: 10px;
+    }
+    .arrowRight {
+      margin-left: 5px;
     }
   }
 }
 
-// @media screen and(min-width: $ipadWidth) {
-//   .movieDetailContain {
-//     .movieDetailPicContain {
-//       .btnPicBox {
-//         img
-//       }
-//     }
-//   }
-// }
+@media screen and(min-width: $ipadWidth) {
+  .movieDetailContain {
+    .movieDetailPicContain {
+      text-align: left;
+      .btnPicBox {
+        margin-left: 50px;
+        width: 40%;
+
+        .loadingMovie {
+          height: 250px;
+        }
+      }
+    }
+
+    .movieInfo {
+      .danhGia {
+        p {
+          font-size: 1.15rem;
+          span {
+            font-size: 1.15rem;
+          }
+        }
+      }
+
+      h4 {
+        font-size: 1.15rem;
+      }
+    }
+
+    .containXemThem {
+      button,
+      .arrowRight {
+        font-size: 0.875rem;
+      }
+
+      button {
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .movieDetailContain {
+    .movieDetailWrapper {
+      .movieDetailPicContain {
+        .btnPicBox {
+          margin: 0;
+          width: 90%;
+          .loadingMovie {
+            height: 350px;
+          }
+        }
+      }
+    }
+
+    .movieInfo {
+      h2 {
+        font-size: 1.63rem;
+        line-height: 2rem;
+      }
+    }
+
+    .sideMovies {
+      .sideMoviesContain {
+        img {
+          height: 83%;
+          width: 100%;
+        }
+
+        p {
+          height: 17%;
+          display: block;
+          margin: 0;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

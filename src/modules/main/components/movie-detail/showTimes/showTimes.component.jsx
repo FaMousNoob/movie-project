@@ -13,7 +13,7 @@ function ShowTimes() {
     chooseNgayChieu: [],
   });
   const { lichChieu } = useSelector((state) => state.movie.movieDetail);
-  console.log(lichChieu);
+
   //UPDATE LOAIRAP AND CHOOSECINEMA VARIABLES
   const listLoaiRap = [];
   lichChieu?.forEach((movie) => {
@@ -82,7 +82,6 @@ function ShowTimes() {
         luuNgayChieu.push(newNgay);
       }
     });
-    console.log(luuNgayChieu);
 
     if (showtimeForm.chooseNgayChieu.toString() !== luuNgayChieu.toString()) {
       setshowtimeForm({
@@ -125,7 +124,7 @@ function ShowTimes() {
   return (
     <div className='showTimes'>
       <h3>LỊCH CHIẾU</h3>
-      <div>
+      <div className='selectContain'>
         <select
           name='loaiRap'
           onChange={handleChange}
@@ -136,7 +135,7 @@ function ShowTimes() {
         <select
           name='loaiVungRap'
           onChange={handleChange}
-          className='form-select'
+          className='form-select middleSelect'
           aria-label='Default select example'>
           {renderOption(showtimeForm.chooseCinemaPlace)}
         </select>

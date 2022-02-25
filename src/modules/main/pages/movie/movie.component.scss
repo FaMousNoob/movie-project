@@ -1,7 +1,7 @@
-@import '../../../../../assets/scss/default';
+@import '../../../../assets/scss/default';
 
-.hotMovieContain {
-  padding: 20px 0;
+.movies {
+  padding-top: 20px;
   .hotMovieTitle {
     border-bottom: 1px solid #ddd;
     h3 {
@@ -78,28 +78,9 @@
       }
     }
   }
-
-  .containXemThem {
-    text-align: right;
-    font-size: 0.75rem;
-
-    button,
-    .arrowRight {
-      color: $secondary;
-    }
-
-    button {
-      border: 1px solid $secondary;
-      padding: 10px;
-    }
-    .arrowRight {
-      margin-left: 5px;
-    }
-  }
 }
-
 @media screen and(min-width: $ipadWidth) {
-  .hotMovieContain {
+  .movies {
     .hotMovieWrapper {
       grid-template-columns: 1fr 1fr 1fr;
       .hotMovieBox {
@@ -111,22 +92,11 @@
         }
       }
     }
-
-    .containXemThem {
-      button,
-      .arrowRight {
-        font-size: 0.875rem;
-      }
-
-      button {
-        padding: 10px 20px;
-      }
-    }
   }
 }
 
 @media screen and(min-width: $mediumWidth) {
-  .hotMovieContain {
+  .movies {
     .hotMovieTitle {
       h3 {
         font-size: 1.2rem;
@@ -145,7 +115,7 @@
 }
 
 @media screen and(min-width: $windowWidth) {
-  .hotMovieContain {
+  .movies {
     .hotMovieWrapper {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
