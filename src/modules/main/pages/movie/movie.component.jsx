@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './movie.component.scss';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
