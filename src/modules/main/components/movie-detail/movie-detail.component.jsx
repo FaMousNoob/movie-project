@@ -69,7 +69,7 @@ function MovieDetail() {
               <div className='danhGia'>
                 <FontAwesomeIcon icon={solid('star')} className='fontStar' />
                 <p>
-                  <span>{trailer.danhGia}</span>/{trailer.danhGia}
+                  <span>{trailer.danhGia}</span>/10
                 </p>
               </div>
 

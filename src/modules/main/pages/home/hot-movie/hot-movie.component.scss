@@ -134,7 +134,11 @@
     }
     .hotMovieWrapper {
       .hotMovieBox {
+        .hotMoviePic {
+          height: 90%;
+        }
         .hotMovieName {
+          height: 10%;
           p {
             font-size: 1rem;
           }
