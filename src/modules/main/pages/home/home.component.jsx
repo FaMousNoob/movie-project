@@ -4,7 +4,6 @@ import HotMovieHome from './hot-movie/hot-movie.component';
 import { useDispatch } from 'react-redux';
 import { getMovieListAction } from '../../../../store/actions/movie.actions';
 import './home.component.scss';
-import { NavLink } from 'react-router-dom';
 import Sale from '../../components/sale/sale.component';
 
 function Home() {

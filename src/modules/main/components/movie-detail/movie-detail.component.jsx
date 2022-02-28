@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
-import {
-  getMovieDetailAction,
-  getMovieListAction,
-} from '../../../../store/actions/movie.actions';
+import { useParams } from 'react-router-dom';
+import { getMovieDetailAction } from '../../../../store/actions/movie.actions';
 import PopUpTrailer from '../pop-up-trailer/pop-up-trailer.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -14,8 +11,6 @@ import ShowTimes from './showTimes/showTimes.component';
 import SideMovies from '../side-movies/side-movies.component';
 
 function MovieDetail() {
-  const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
-
   const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
   const trailer = useSelector((state) => state.movie.movieDetail);
   const dispatch = useDispatch();
@@ -31,12 +26,6 @@ function MovieDetail() {
   const handleTrailer = (value) => {
     setshowTrailer({ isTrueOrNot: value });
   };
-
-  //detect window size change
-  const handleRenderSideBar = () => {
-    setwindowWidth(window.innerWidth);
-  };
-  window.addEventListener('resize', handleRenderSideBar);
 
   return (
     <section className=' container movieDetailContain'>
