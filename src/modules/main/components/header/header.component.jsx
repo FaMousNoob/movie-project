@@ -88,8 +88,8 @@ function Header(props) {
                 </NavLink>
               </li>
               <li onClick={handleDropDown}>
-                <NavLink className='navLink' to='/ticket-price'>
-                  RẠP/GIÁ VÉ
+                <NavLink className='navLink' to='/khuyen-mai'>
+                  KHUYẾN MÃI
                 </NavLink>
               </li>
             </ul>
@@ -108,8 +108,8 @@ function Header(props) {
           </NavLink>
         </li>
         <li>
-          <NavLink className='navLink3' to='/ticket-price'>
-            RẠP/GIÁ VÉ
+          <NavLink className='navLink3' to='/khuyen-mai'>
+            KHUYẾN MÃI
           </NavLink>
         </li>
       </ul>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   getMovieDetailAction,
   getMovieListAction,
@@ -11,24 +11,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './movie-detail.component.scss';
 import ShowTimes from './showTimes/showTimes.component';
+import SideMovies from '../side-movies/side-movies.component';
 
 function MovieDetail() {
   const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
 
   const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
   const trailer = useSelector((state) => state.movie.movieDetail);
-  const { movieList } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const navigate = useNavigate();
-  console.log(trailer);
 
   // extend variable to sync data with other component to render popUpTrailer
   const newMovieDetail = { trailer };
 
   useEffect(() => {
     dispatch(getMovieDetailAction(id));
-    dispatch(getMovieListAction());
   }, [dispatch, id]);
 
   const handleTrailer = (value) => {
@@ -90,36 +87,9 @@ function MovieDetail() {
           </div>
           {trailer?.maPhim === parseInt(id) ? <ShowTimes /> : ''}
         </div>
-        {windowWidth >= 768 ? (
-          trailer?.maPhim === parseInt(id) ? (
-            <div className='col-md-4 sideMovies'>
-              <h3>PHIM ĐANG CHIẾU</h3>
-              <div className='sideMoviesContain'>
-                {movieList?.slice(0, 6).map((movie, index) => (
-                  <div key={index} className='moviesEach'>
-                    <Link to={`/movie-detail/${movie.maPhim}`}>
-                      <img src={movie.hinhAnh} alt='' />
-                    </Link>
-                    <p>{movie.tenPhim}</p>
-                  </div>
-                ))}
-              </div>
-              <div className='containXemThem'>
-                <button onClick={() => navigate('/movie')}>
-                  XEM THÊM
-                  <FontAwesomeIcon
-                    icon={solid('arrow-right-long')}
-                    className='arrowRight'
-                  />
-                </button>
-              </div>
-            </div>
-          ) : (
-            ''
-          )
-        ) : (
-          ''
-        )}
+        <div className='showSideMovies col-4'>
+          <SideMovies />
+        </div>
       </div>
       <PopUpTrailer
         onClick={() => handleTrailer(false)}

@@ -1,28 +1,30 @@
+html * {
+  font-family: 'Roboto', sans-serif !important;
+}
 * {
-  font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body ul {
+html ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-body button {
+html button {
   background: transparent;
   border: none;
 }
 
-body button:hover {
+html button:hover {
   cursor: pointer;
 }
 
-body button:focus {
+html button:focus {
   outline: none;
 }
-body input:focus {
+html input:focus {
   outline: none;
 }

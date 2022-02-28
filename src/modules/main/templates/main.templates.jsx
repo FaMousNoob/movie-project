@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './main.templates.scss';
 import Header from '../components/header/header.component';
 import LoginSignUp from '../components/login-and-signup/login-signup.component';
+import Footer from '../components/footer/footer.component';
 
 function MainTemplate({ children }) {
   const [loginSignUpState, setactiveLoginSignUpState] = useState({
@@ -14,14 +15,15 @@ function MainTemplate({ children }) {
   };
 
   return (
-    <div>
+    <section>
       <Header onClick={() => handleLoginSignUp(activeLoginSignUp)} />
       <LoginSignUp
         loginSignUpState={loginSignUpState.activeOrNot}
         onClick={() => handleLoginSignUp(deactiveLoginSignUp)}
       />
       {children}
-    </div>
+      <Footer />
+    </section>
   );
 }
 

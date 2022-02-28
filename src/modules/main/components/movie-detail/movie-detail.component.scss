@@ -101,63 +101,8 @@
     }
   }
 
-  .sideMovies {
-    h3 {
-      line-height: 2.5rem;
-      display: inline-block;
-      font-size: 1.13rem;
-      &::after {
-        display: block;
-        content: '';
-        height: 2px;
-        width: 40%;
-        background-color: $secondary;
-      }
-    }
-
-    .sideMoviesContain {
-      padding-top: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-column-gap: 10px;
-      grid-row-gap: 10px;
-      .moviesEach {
-        height: 200px;
-        text-decoration: none;
-        color: $fontDark;
-        box-sizing: border-box;
-      }
-
-      img {
-        height: 72%;
-        width: 100%;
-      }
-
-      p {
-        height: 28%;
-        display: block;
-        margin: 0;
-        font-size: 0.875rem;
-      }
-    }
-  }
-
-  .containXemThem {
-    text-align: right;
-    font-size: 0.75rem;
-
-    button,
-    .arrowRight {
-      color: $secondary;
-    }
-
-    button {
-      border: 1px solid $secondary;
-      padding: 10px;
-    }
-    .arrowRight {
-      margin-left: 5px;
-    }
+  .showSideMovies {
+    display: none;
   }
 }
 
@@ -174,14 +119,9 @@
         }
       }
     }
-
-    // .sideMovies {
-    //   .sideMoviesContain {
-    //     .moviesEach {
-    //       height: 250px;
-    //     }
-    //   }
-    // }
+    .showSideMovies {
+      display: block;
+    }
 
     .movieInfo {
       .danhGia {
@@ -195,17 +135,6 @@
 
       h4 {
         font-size: 1.15rem;
-      }
-    }
-
-    .containXemThem {
-      button,
-      .arrowRight {
-        font-size: 0.875rem;
-      }
-
-      button {
-        padding: 10px 20px;
       }
     }
   }
@@ -244,24 +173,6 @@
       display: block;
       margin: 0;
       font-size: 1rem;
-    }
-  }
-}
-
-@media screen and(min-Width: $windowWidth) {
-  .movieDetailContain {
-    .sideMovies {
-      .sideMoviesContain {
-        .moviesEach {
-          height: 100%;
-          img {
-            height: 90%;
-          }
-          p {
-            height: 10%;
-          }
-        }
-      }
     }
   }
 }

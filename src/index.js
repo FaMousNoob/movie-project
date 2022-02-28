@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './babel-plugin-macros.config';
-import './babel.config';
 
 // BOOTSTRAP
 import '../node_modules/bootstrap/dist/js/bootstrap';

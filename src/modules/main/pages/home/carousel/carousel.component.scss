@@ -64,60 +64,6 @@
   }
 }
 
-.blankBackground {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-.ytbLink {
-  transition: all 0.5s;
-  z-index: 3;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  width: 95%;
-  max-width: 800px;
-
-  height: fit-content;
-  background-color: #ffff;
-
-  .ytbTitle {
-    position: relative;
-    text-align: center;
-    padding: 15px;
-    border-bottom: 1px solid $fontLight;
-    p {
-      margin: 0;
-    }
-    button {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      padding-left: 20px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .ytbXmark {
-      color: $fontLight;
-    }
-  }
-  .ytbLinkWrapper {
-    padding: 15px;
-    height: 300px;
-    iframe {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 @media screen and(min-width: $ipadWidth) {
   .onTrailer {
     visibility: unset;
@@ -136,13 +82,6 @@
     .carouselBtn {
       width: 90px;
       height: 90px;
-    }
-  }
-  .ytbLink {
-    top: 50%;
-
-    .ytbLinkWrapper {
-      height: 500px;
     }
   }
 }

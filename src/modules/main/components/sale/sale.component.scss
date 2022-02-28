@@ -1,0 +1,103 @@
+@import '../../../../assets/scss/default';
+
+.saleInfo,
+.about {
+  h3 {
+    color: $fontDark;
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 30px;
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 50%;
+      background-color: $secondary;
+      margin-top: 10px;
+    }
+  }
+}
+
+.saleInfo {
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    li {
+      position: relative;
+    }
+    button {
+      transition: all, 0.3s;
+      display: none;
+      font-size: 0.875rem;
+      padding: 10px 30px;
+      color: #fff;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid #fff;
+    }
+
+    img {
+      transition: all, 0.3s;
+      width: 100%;
+    }
+  }
+}
+
+.about {
+  padding: 50px 0;
+  p {
+    text-align: justify;
+    font-size: 0.875rem;
+    color: $fontDark;
+  }
+  span {
+    color: #000;
+    font-weight: 600;
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .saleInfo,
+  .about {
+    h3 {
+      font-size: 1.125rem;
+    }
+  }
+  .saleInfo {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr;
+
+      li {
+        &:hover {
+          cursor: pointer;
+
+          img {
+            filter: brightness(50%);
+          }
+
+          button {
+            display: inline-block;
+
+            &:hover {
+              border-color: $secondary;
+              color: $secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .saleInfo {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}

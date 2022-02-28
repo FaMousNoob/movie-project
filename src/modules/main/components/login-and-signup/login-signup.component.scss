@@ -1,13 +1,11 @@
 @import '../../../../assets/scss/default';
 
 .isShowTitleLogin {
-  // display: block;
   visibility: unset;
   opacity: 1;
 }
 
 .NotShowTitleLogin {
-  // display: none;
   visibility: hidden;
   opacity: 0;
 }
@@ -15,7 +13,7 @@
 .loginContain {
   overflow: hidden;
   transition: all 0.5s;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,7 +36,7 @@
   transition: all 0.5s;
   z-index: 3;
   padding: 25px;
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
   width: 95%;
