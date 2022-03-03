@@ -4,10 +4,13 @@ import Header from '../components/header/header.component';
 import LoginSignUp from '../components/login-and-signup/login-signup.component';
 import Footer from '../components/footer/footer.component';
 
-function MainTemplate({ children }) {
+function MainTemplate(props) {
+  const { children } = props;
+  console.log(props);
   const [loginSignUpState, setactiveLoginSignUpState] = useState({
     activeOrNot: false,
   });
+
   const [deactiveLoginSignUp, activeLoginSignUp] = [false, true];
 
   const handleLoginSignUp = (value) => {

@@ -13,7 +13,7 @@ function LoginSignUp(props) {
       ...isLoginOrSignUp,
       loginOrSignUp: value,
     });
-
+  console.log('login singup render');
   return (
     <section>
       <section
@@ -33,7 +33,9 @@ function LoginSignUp(props) {
               'loginSignUpBtn ' +
               (isLoginOrSignUp.loginOrSignUp ? 'isActive' : '')
             }
-            onClick={() => handleLoginOrSignUp(true)}>
+            onClick={() => {
+              handleLoginOrSignUp(true);
+            }}>
             ĐĂNG NHẬP
           </button>
           <span>/</span>

@@ -5,7 +5,6 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { NavLink } from 'react-router-dom';
 
 function Header(props) {
-  const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
   const [activeDropDown, setactiveDropDown] = useState({ isTrueOrNot: false });
 
   const handleDropDown = () => {
@@ -16,25 +15,55 @@ function Header(props) {
     console.log(activeDropDown.isTrueOrNot);
   };
 
-  const handleUpdateLogo = () => {
-    setwindowWidth(window.innerWidth);
+  const checkUser = JSON.parse(localStorage.getItem('userLogin'));
+
+  const handleSignOut = () => {
+    localStorage.removeItem('userLogin');
+    window.location.reload(false);
   };
-  window.addEventListener('resize', handleUpdateLogo);
+
+  const loginOrSignOutBtn = () => {
+    if (checkUser) {
+      return (
+        <div className='dropdown '>
+          <button
+            className='signOutBtn btn btn-secondary dropdown-toggle'
+            type='button'
+            id='dropdownMenuButton1'
+            data-bs-toggle='dropdown'
+            aria-expanded='false'>
+            <FontAwesomeIcon icon={solid('user')} className='userIcon' />
+            user
+          </button>
+          <ul
+            className='dropdown-menu dropDownUser'
+            aria-labelledby='dropdownMenuButton1'>
+            <li>Tài khoản</li>
+            <li onClick={handleSignOut}>Thoát</li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <button className='navLogin' onClick={() => props.onClick()}>
+          <FontAwesomeIcon icon={solid('user')} />
+          Đăng nhập
+        </button>
+      );
+    }
+  };
 
   return (
-    <section>
+    <section className='headerContain'>
       <div className='myNavbar container concainer-lg'>
         <div className='logoContain'>
           <a href='/'>
             <img
-              src={
-                windowWidth < 768
-                  ? '/images/galaxy-logo-mobile.png'
-                  : '/images/galaxy-logo.png'
-              }
-              alt='logo'
-              className='navLogo'
+              src='/images/galaxy-logo-mobile.png'
+              alt=''
+              className='navLogoMobile'
             />
+            <img src='/images/galaxy-logo.png' alt='' className='navLogo' />
           </a>
         </div>
         <div className='mainSearchMovie'>
@@ -45,10 +74,8 @@ function Header(props) {
           <input type='text' placeholder='Tìm tên phim' />
         </div>
         <div className='navbarRight'>
-          <button className='navLogin' onClick={() => props.onClick()}>
-            <FontAwesomeIcon icon={solid('user')} />
-            Đăng nhập
-          </button>
+          {loginOrSignOutBtn()}
+
           <div
             className={
               'dropDownMenu ' +

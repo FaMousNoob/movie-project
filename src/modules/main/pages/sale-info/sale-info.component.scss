@@ -1,0 +1,62 @@
+@import '../../../../assets/scss/default';
+.saleInfo {
+  .saleSideMovies {
+    display: none;
+  }
+}
+
+.saleMain {
+  h3 {
+    color: $fontDark;
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 30px 0;
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 50%;
+      background-color: $secondary;
+      margin-top: 10px;
+    }
+  }
+  p {
+    text-align: justify;
+    font-size: 0.815rem;
+    color: $fontDark;
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .saleInfo {
+    .sale {
+      ul {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .saleSideMovies {
+      display: block;
+    }
+  }
+
+  .saleMain {
+    h3 {
+      font-size: 1.125rem;
+    }
+    p {
+      font-size: 0.935rem;
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .saleInfo {
+    .sale {
+      ul {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
 @import '../../../../assets/scss/default';
 
+.headerContain {
+  background: #f7f9fa;
+}
+
 .extendingInput {
   position: relative;
   input {
@@ -56,6 +60,10 @@
     img {
       width: 100%;
     }
+
+    .navLogo {
+      display: none;
+    }
   }
 
   .mainSearchMovie {
@@ -68,15 +76,48 @@
 
     display: flex;
     align-items: center;
+
     .navLogin {
       font-weight: 400;
       padding: 15px 0;
       color: $fontLight;
       transition: color 0.3s;
-      &:hover {
+    }
+
+    .signOutBtn {
+      background-color: transparent;
+      border: none;
+      color: $fontLight;
+
+      &:focus {
+        box-shadow: none;
         color: $secondary;
       }
+
+      .userIcon {
+        color: $secondary;
+        margin-right: 50px;
+        font-size: 1.5rem;
+      }
     }
+    .dropDownUser {
+      padding: 0;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+      background: #fff;
+
+      li {
+        letter-spacing: 1px;
+        padding: 12px 20px;
+        font-size: 0.75rem;
+        color: $fontLight;
+        transition: all, 0.3s;
+        &:hover {
+          color: $secondary;
+          cursor: pointer;
+        }
+      }
+    }
+
     .dropDownMenu {
       button .NavBtn {
         padding: 10px 15px;
@@ -124,6 +165,13 @@
   .myNavbar {
     .logoContain {
       width: 250px;
+      .navLogoMobile {
+        display: none;
+      }
+
+      .navLogo {
+        display: inline;
+      }
     }
   }
 }

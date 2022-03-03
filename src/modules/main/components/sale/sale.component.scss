@@ -1,13 +1,13 @@
 @import '../../../../assets/scss/default';
 
-.saleInfo,
+.sale,
 .about {
   h3 {
     color: $fontDark;
     display: inline-block;
     font-size: 0.875rem;
     font-weight: 500;
-    padding-bottom: 30px;
+    padding: 30px 0;
     &::after {
       content: '';
       display: block;
@@ -19,7 +19,7 @@
   }
 }
 
-.saleInfo {
+.sale {
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,27 +48,14 @@
   }
 }
 
-.about {
-  padding: 50px 0;
-  p {
-    text-align: justify;
-    font-size: 0.875rem;
-    color: $fontDark;
-  }
-  span {
-    color: #000;
-    font-weight: 600;
-  }
-}
-
 @media screen and(min-width: $ipadWidth) {
-  .saleInfo,
+  .sale,
   .about {
     h3 {
       font-size: 1.125rem;
     }
   }
-  .saleInfo {
+  .sale {
     ul {
       grid-template-columns: 1fr 1fr 1fr;
 
@@ -95,7 +82,7 @@
 }
 
 @media screen and(min-width: $mediumWidth) {
-  .saleInfo {
+  .sale {
     ul {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }

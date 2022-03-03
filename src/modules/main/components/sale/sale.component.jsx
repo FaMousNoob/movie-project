@@ -15,7 +15,7 @@ function Sale() {
     ));
   };
   return (
-    <section className='container saleInfo'>
+    <section className='container sale'>
       <h3>TIN KHUYẾN MÃI</h3>
       <ul>{renderSale()}</ul>
     </section>
