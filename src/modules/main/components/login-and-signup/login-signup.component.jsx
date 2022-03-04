@@ -6,6 +6,8 @@ import Login from '../../pages/login/login.component';
 import SignUp from '../../pages/sign-up/sign-up.component';
 
 function LoginSignUp(props) {
+  //props from mainTemplate
+  console.log(props);
   const [isLoginOrSignUp, setisLoginOrNot] = useState({ loginOrSignUp: true });
 
   const handleLoginOrSignUp = (value) =>
@@ -13,15 +15,15 @@ function LoginSignUp(props) {
       ...isLoginOrSignUp,
       loginOrSignUp: value,
     });
-  console.log('login singup render');
+
   return (
     <section>
-      <section
+      <div
         onClick={() => props.onClick()}
         className={
           'loginContain ' +
           (props.loginSignUpState ? 'isShowTitleLogin' : 'NotShowTitleLogin')
-        }></section>
+        }></div>
       <div
         className={
           'loginTitle ' +
@@ -52,7 +54,16 @@ function LoginSignUp(props) {
         <button className='loginX' onClick={() => props.onClick()}>
           <FontAwesomeIcon icon={solid('xmark')} className='xFont' />
         </button>
-        {isLoginOrSignUp.loginOrSignUp ? <Login /> : <SignUp />}
+        {isLoginOrSignUp.loginOrSignUp ? (
+          <Login />
+        ) : (
+          <SignUp
+            //this onClick is to deactive login-signup component
+            onClick={() => props.onClick()}
+            //this onClick is to active SignUpSuccess component
+            handleSignUpSuccessOn={() => props.handleSignUpSuccessOn()}
+          />
+        )}
       </div>
     </section>
   );

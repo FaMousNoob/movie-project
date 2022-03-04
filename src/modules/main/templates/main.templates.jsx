@@ -3,26 +3,39 @@ import './main.templates.scss';
 import Header from '../components/header/header.component';
 import LoginSignUp from '../components/login-and-signup/login-signup.component';
 import Footer from '../components/footer/footer.component';
+import SignUpSuccess from '../components/sign-up-success/sign-up-success.component';
 
-function MainTemplate(props) {
-  const { children } = props;
-  console.log(props);
+function MainTemplate({ children }) {
+  //decide LoginSignUp show up or not
   const [loginSignUpState, setactiveLoginSignUpState] = useState({
     activeOrNot: false,
   });
 
-  const [deactiveLoginSignUp, activeLoginSignUp] = [false, true];
+  //decide signupSuccess show up or not
+  const [alertSignUpSuccess, setalertSignUpSuccess] = useState({
+    activeOrNot: false,
+  });
+  //change value to show singupsuccess or not
+  const handleSignUpSuccess = (value) => {
+    setalertSignUpSuccess({ activeOrNot: value });
+  };
 
   const handleLoginSignUp = (value) => {
-    setactiveLoginSignUpState({ ...loginSignUpState, activeOrNot: value });
+    setactiveLoginSignUpState({ activeOrNot: value });
   };
 
   return (
     <section>
-      <Header onClick={() => handleLoginSignUp(activeLoginSignUp)} />
+      <Header onClick={() => handleLoginSignUp(true)} />
       <LoginSignUp
+        handleSignUpSuccessOn={() => handleSignUpSuccess(true)}
         loginSignUpState={loginSignUpState.activeOrNot}
-        onClick={() => handleLoginSignUp(deactiveLoginSignUp)}
+        onClick={() => handleLoginSignUp(false)}
+      />
+
+      <SignUpSuccess
+        alertSignUpSuccess={alertSignUpSuccess.activeOrNot}
+        handleSignUpSuccessOff={() => handleSignUpSuccess(false)}
       />
       {children}
       <Footer />

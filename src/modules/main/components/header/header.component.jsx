@@ -5,8 +5,8 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { NavLink } from 'react-router-dom';
 
 function Header(props) {
+  //drop down menu in phone screen
   const [activeDropDown, setactiveDropDown] = useState({ isTrueOrNot: false });
-
   const handleDropDown = () => {
     setactiveDropDown({
       ...activeDropDown,
@@ -15,15 +15,20 @@ function Header(props) {
     console.log(activeDropDown.isTrueOrNot);
   };
 
-  const checkUser = JSON.parse(localStorage.getItem('userLogin'));
-
+  //logout function
   const handleSignOut = () => {
     localStorage.removeItem('userLogin');
     window.location.reload(false);
   };
 
+  //if user exist, show logout btn, else show login btn
+  const checkUser = JSON.parse(localStorage.getItem('userLogin'));
+  //render login or sign up btn
+  console.log(checkUser);
   const loginOrSignOutBtn = () => {
     if (checkUser) {
+      const splitName = checkUser.hoTen.split(' ');
+      const lastName = splitName.pop();
       return (
         <div className='dropdown '>
           <button
@@ -33,7 +38,7 @@ function Header(props) {
             data-bs-toggle='dropdown'
             aria-expanded='false'>
             <FontAwesomeIcon icon={solid('user')} className='userIcon' />
-            user
+            <span>{lastName}</span>
           </button>
           <ul
             className='dropdown-menu dropDownUser'
@@ -75,7 +80,6 @@ function Header(props) {
         </div>
         <div className='navbarRight'>
           {loginOrSignOutBtn()}
-
           <div
             className={
               'dropDownMenu ' +

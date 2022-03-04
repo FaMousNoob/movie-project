@@ -10,7 +10,6 @@ export const loginAction = (userLogin) => async (dispatch) => {
     window.location.reload(false);
   } catch (error) {
     localStorage.setItem('loginFailed', '{"user":"failed"}');
-
     console.log(error);
   }
 };
