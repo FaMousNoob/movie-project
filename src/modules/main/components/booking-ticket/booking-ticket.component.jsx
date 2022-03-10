@@ -107,13 +107,20 @@ function BookingTicket() {
   );
 
   const { thongTinPhim } = booking;
+
+  const returnHttpsImg = (movie) => {
+    const protocal = 'https';
+    const splitImgUrl = movie.hinhAnh?.split('http');
+    return protocal.concat(splitImgUrl[1]);
+  };
+
   return (
     <section className='container bookingTicket'>
       <div className='bookingInfo'>
         <div className='row'>
           <div className='col-4 col-lg-12 imgContain'>
             {booking.danhSachGhe ? (
-              <img src={thongTinPhim?.hinhAnh} alt='' />
+              <img src={returnHttpsImg(thongTinPhim)} alt='' />
             ) : (
               <div className='loadingImg skeleton'></div>
             )}
