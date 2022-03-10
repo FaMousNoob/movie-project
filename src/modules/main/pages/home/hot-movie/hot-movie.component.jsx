@@ -34,19 +34,24 @@ function HotMovieHome() {
 
   const handleRenderMovie = () => {
     const numOfMovies = windowWidth < 768 ? 4 : 8;
-    return movieList?.slice(0, numOfMovies).map((movie, index) => (
-      <div className='hotMovieBox' key={index}>
-        <Link to={`/movie-detail/${movie.maPhim}`}>
-          <div className='hotMoviePic'>
-            <img src={movie.hinhAnh} alt='' />
-            <button>MUA VÉ</button>
+    return movieList?.slice(0, numOfMovies).map((movie, index) => {
+      const protocal = 'https';
+      const splitImgUrl = movie.hinhAnh.split('http');
+      const httpsImg = protocal.concat(splitImgUrl[1]);
+      return (
+        <div className='hotMovieBox' key={index}>
+          <Link to={`/movie-detail/${movie.maPhim}`}>
+            <div className='hotMoviePic'>
+              <img src={httpsImg} alt='' />
+              <button>MUA VÉ</button>
+            </div>
+          </Link>
+          <div className='hotMovieName'>
+            <p>{movie.tenPhim}</p>
           </div>
-        </Link>
-        <div className='hotMovieName'>
-          <p>{movie.tenPhim}</p>
         </div>
-      </div>
-    ));
+      );
+    });
   };
 
   return (
