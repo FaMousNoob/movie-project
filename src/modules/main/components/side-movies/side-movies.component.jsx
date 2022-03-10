@@ -24,14 +24,20 @@ function SideMovies() {
   };
 
   const renderMovies = () => {
-    return movieList?.slice(0, 6).map((movie, index) => (
-      <div key={index} className='moviesEach'>
-        <Link to={`/movie-detail/${movie.maPhim}`}>
-          <img src={movie.hinhAnh} alt='' />
-        </Link>
-        <p>{movie.tenPhim}</p>
-      </div>
-    ));
+    return movieList?.slice(0, 6).map((movie, index) => {
+      const protocal = 'https';
+      const splitImgUrl = movie?.hinhAnh.split('http');
+      const httpsImg = protocal.concat(splitImgUrl[1]);
+
+      return (
+        <div key={index} className='moviesEach'>
+          <Link to={`/movie-detail/${movie.maPhim}`}>
+            <img src={httpsImg} alt='' />
+          </Link>
+          <p>{movie.tenPhim}</p>
+        </div>
+      );
+    });
   };
 
   return (

@@ -24,19 +24,24 @@ function Movie() {
     ));
 
   const handleRender6Movie = () =>
-    movieList?.slice(0, 18).map((movie, index) => (
-      <div className='hotMovieBox' key={index}>
-        <Link to={`/movie-detail/${movie.maPhim}`}>
-          <div className='hotMoviePic'>
-            <img src={movie.hinhAnh} alt='' />
-            <button>MUA VÉ</button>
+    movieList?.slice(0, 18).map((movie, index) => {
+      const protocal = 'https';
+      const splitImgUrl = movie.hinhAnh.split('http');
+      const httpsImg = protocal.concat(splitImgUrl[1]);
+      return (
+        <div className='hotMovieBox' key={index}>
+          <Link to={`/movie-detail/${movie.maPhim}`}>
+            <div className='hotMoviePic'>
+              <img src={httpsImg} alt='' />
+              <button>MUA VÉ</button>
+            </div>
+          </Link>
+          <div className='hotMovieName'>
+            <p>{movie.tenPhim}</p>
           </div>
-        </Link>
-        <div className='hotMovieName'>
-          <p>{movie.tenPhim}</p>
         </div>
-      </div>
-    ));
+      );
+    });
 
   return (
     <div className='movies container'>

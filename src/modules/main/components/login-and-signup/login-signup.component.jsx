@@ -9,12 +9,10 @@ import { useDispatch } from 'react-redux';
 import { showLoginSignUpAction } from '../../../../store/actions/login-sign-up.action';
 function LoginSignUp(props) {
   //props from mainTemplate
-  console.log(props);
   const dispatch = useDispatch();
   const showComponentOrNot = useSelector(
     (state) => state.activeLoginSignUp.activeLoginSignUp
   );
-  console.log(showComponentOrNot);
   const [isLoginOrSignUp, setisLoginOrNot] = useState({ loginOrSignUp: true });
 
   const handleLoginOrSignUp = (value) =>

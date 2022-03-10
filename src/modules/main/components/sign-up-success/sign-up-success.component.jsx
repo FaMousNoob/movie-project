@@ -4,7 +4,6 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './sign-up-success.component.scss';
 
 function SignUpSuccess(props) {
-  console.log(props);
   return (
     <section>
       <div

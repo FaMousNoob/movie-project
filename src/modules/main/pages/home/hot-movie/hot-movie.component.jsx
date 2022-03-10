@@ -32,7 +32,7 @@ function HotMovieHome() {
     ));
   };
 
-  const handleRender6Movie = () => {
+  const handleRenderMovie = () => {
     const numOfMovies = windowWidth < 768 ? 4 : 8;
     return movieList?.slice(0, numOfMovies).map((movie, index) => (
       <div className='hotMovieBox' key={index}>
@@ -56,7 +56,7 @@ function HotMovieHome() {
       </div>
       <div className='hotMovieWrapper'>
         {movieList.length !== 0
-          ? handleRender6Movie()
+          ? handleRenderMovie()
           : renderLoadingHotMovies()}
       </div>
 

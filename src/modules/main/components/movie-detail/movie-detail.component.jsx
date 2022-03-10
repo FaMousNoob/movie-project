@@ -27,6 +27,15 @@ function MovieDetail() {
     setshowTrailer({ isTrueOrNot: value });
   };
 
+  const returnHttpsImg = (trailer) => {
+    const protocal = 'https';
+    if (trailer.lichChieu) {
+      const splitImgUrl = trailer?.hinhAnh.split('http');
+      return protocal.concat(splitImgUrl[1]);
+    }
+    return '';
+  };
+
   return (
     <section className=' container movieDetailContain'>
       <div className='row'>
@@ -35,7 +44,7 @@ function MovieDetail() {
             <div className='col-lg-4 movieDetailPicContain'>
               <div className='btnPicBox'>
                 {trailer?.maPhim === parseInt(id) ? (
-                  <img src={trailer.hinhAnh} alt='' />
+                  <img src={returnHttpsImg(trailer)} alt='' />
                 ) : (
                   <div className='loadingMovie skeleton'></div>
                 )}

@@ -41,18 +41,23 @@ function Booking() {
 
   //render movieList
   const renderMovieList = () => {
-    return movieList?.slice(0, 20).map((movie, index) => (
-      <button
-        className={
-          'bookingBtn ' +
-          (movie.maPhim === movies.maPhim ? 'activeMovie color' : '')
-        }
-        key={index}
-        onClick={() => handleState('maPhim', movie.maPhim)}>
-        <img src={movie.hinhAnh} alt='' />
-        <p>{movie.tenPhim}</p>
-      </button>
-    ));
+    return movieList?.slice(0, 20).map((movie, index) => {
+      const protocal = 'https';
+      const splitImgUrl = movie.hinhAnh.split('http');
+      const httpsImg = protocal.concat(splitImgUrl[1]);
+      return (
+        <button
+          className={
+            'bookingBtn ' +
+            (movie.maPhim === movies.maPhim ? 'activeMovie color' : '')
+          }
+          key={index}
+          onClick={() => handleState('maPhim', movie.maPhim)}>
+          <img src={httpsImg} alt='' />
+          <p>{movie.tenPhim}</p>
+        </button>
+      );
+    });
   };
 
   //render the second box
