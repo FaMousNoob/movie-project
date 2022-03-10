@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import dateFormat from 'date-format';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { showLoginSignUpAction } from '../../../../../store/actions/login-sign-up.action';
 import './showTimes.component.scss';
 
 function ShowTimes() {
@@ -13,6 +16,8 @@ function ShowTimes() {
     chooseNgayChieu: [],
   });
   const { lichChieu } = useSelector((state) => state.movie.movieDetail);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //UPDATE LOAIRAP AND CHOOSECINEMA VARIABLES
   const listLoaiRap = [];
@@ -102,6 +107,17 @@ function ShowTimes() {
     });
   };
 
+  //check if user exist to navigate to booking/:id, if not, pop up login
+  const checkUserExist = (malichChieu) => {
+    const userExist = JSON.parse(localStorage.getItem('userLogin'));
+    if (userExist) {
+      navigate(`/booking/${malichChieu}`);
+    } else {
+      dispatch(showLoginSignUpAction(true));
+    }
+  };
+
+  //render list of time from the movie
   const rendershowtime = () => {
     return lichChieu?.map((cinema, index) => {
       const ngayChieu = dateFormat(
@@ -115,7 +131,12 @@ function ShowTimes() {
         cinema.thongTinRap.tenCumRap === showtimeForm.loaiVungRap &&
         ngayChieu === showtimeForm.ngayChieu
       ) {
-        return <button key={index}>{gioChieu}</button>;
+        const maLichChieu = cinema.maLichChieu.toString();
+        return (
+          <button onClick={() => checkUserExist(maLichChieu)} key={index}>
+            {gioChieu}
+          </button>
+        );
       }
       return false;
     });

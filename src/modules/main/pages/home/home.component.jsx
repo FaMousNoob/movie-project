@@ -11,7 +11,6 @@ function Home() {
   useEffect(() => {
     dispatch(getMovieListAction());
   }, [dispatch]);
-
   return (
     <div>
       <CarouselHome />

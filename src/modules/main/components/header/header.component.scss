@@ -109,16 +109,22 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
       background: #fff;
 
-      li {
-        letter-spacing: 1px;
-        padding: 12px 20px;
-        font-size: 0.75rem;
+      li,
+      .user {
         color: $fontLight;
         transition: all, 0.3s;
+        font-size: 0.75rem;
+        text-decoration: none;
+
         &:hover {
           color: $secondary;
           cursor: pointer;
         }
+      }
+
+      li {
+        letter-spacing: 1px;
+        padding: 12px 20px;
       }
     }
 

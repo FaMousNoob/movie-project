@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +13,24 @@ function HotMovieHome() {
   const handleRenderSideBar = () => {
     setwindowWidth(window.innerWidth);
   };
+  const anArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  window.addEventListener('resize', handleRenderSideBar);
+  useEffect(() => {
+    window.addEventListener('resize', handleRenderSideBar);
+    return () => {
+      window.removeEventListener('resize', handleRenderSideBar);
+    };
+  }, []);
+
+  //render loading div before data exists
+  const renderLoadingHotMovies = () => {
+    const numOfMovies = windowWidth < 768 ? 4 : 8;
+    return anArray.slice(0, numOfMovies).map((movies, index) => (
+      <div className='hotMovieBox' key={index}>
+        <div className='hotMoviePic skeleton' id='loadingHotMovies'></div>
+      </div>
+    ));
+  };
 
   const handleRender6Movie = () => {
     const numOfMovies = windowWidth < 768 ? 4 : 8;
@@ -38,7 +54,12 @@ function HotMovieHome() {
       <div className='hotMovieTitle'>
         <h3>PHIM ĐANG CHIẾU</h3>
       </div>
-      <div className='hotMovieWrapper'>{handleRender6Movie()}</div>
+      <div className='hotMovieWrapper'>
+        {movieList.length !== 0
+          ? handleRender6Movie()
+          : renderLoadingHotMovies()}
+      </div>
+
       <div className='containXemThem'>
         <button onClick={() => navigate('/movie')}>
           XEM THÊM

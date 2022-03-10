@@ -8,27 +8,22 @@ import { signUpAction } from '../../../../store/actions/sign-up.action';
 
 function SignUp(props) {
   //done the sign up, just need a pop up after sign up complete, the picture is in zalo
-  console.log(props);
   const dispatch = useDispatch();
 
   const validate = Yup.object({
     hoTen: Yup.string()
-      .matches(/^[aA-zZ\s]+$/, 'Họ Tên không được có kí tự đặc biệt')
       .min(5, 'Họ Tên không ít hơn 5 kí tự')
       .max(30, 'Họ Tên không quá 30 kí tự')
       .required('Họ Tên không để trống'),
     taiKhoan: Yup.string()
-      .matches(/^[A-Za-z0-9 ]+$/, 'Tài khoản không được có kí tự đặc biệt')
       .min(5, 'Tài khoản không ít hơn 5 kí tự')
       .max(30, 'Tài khoản không quá 30 kí tự')
       .required('Tài khoản được để trống'),
     matKhau: Yup.string()
-      .matches(/^[A-Za-z0-9 ]+$/, 'Mật khẩu không được có kí tự đặc biệt')
       .min(5, 'Mật khẩu không ít hơn 5 kí tự')
       .max(30, 'Mật khẩu không quá 30 kí tự')
       .required('Mật khẩu không để trống'),
     xacNhanMatKhau: Yup.string()
-
       .oneOf([Yup.ref('matKhau'), null], 'Mật khẩu không khớp')
       .required('Xác nhận mật khẩu không để trống'),
     email: Yup.string()

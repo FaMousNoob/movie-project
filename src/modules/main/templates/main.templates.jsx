@@ -6,11 +6,6 @@ import Footer from '../components/footer/footer.component';
 import SignUpSuccess from '../components/sign-up-success/sign-up-success.component';
 
 function MainTemplate({ children }) {
-  //decide LoginSignUp show up or not
-  const [loginSignUpState, setactiveLoginSignUpState] = useState({
-    activeOrNot: false,
-  });
-
   //decide signupSuccess show up or not
   const [alertSignUpSuccess, setalertSignUpSuccess] = useState({
     activeOrNot: false,
@@ -20,18 +15,10 @@ function MainTemplate({ children }) {
     setalertSignUpSuccess({ activeOrNot: value });
   };
 
-  const handleLoginSignUp = (value) => {
-    setactiveLoginSignUpState({ activeOrNot: value });
-  };
-
   return (
     <section>
-      <Header onClick={() => handleLoginSignUp(true)} />
-      <LoginSignUp
-        handleSignUpSuccessOn={() => handleSignUpSuccess(true)}
-        loginSignUpState={loginSignUpState.activeOrNot}
-        onClick={() => handleLoginSignUp(false)}
-      />
+      <Header />
+      <LoginSignUp handleSignUpSuccessOn={() => handleSignUpSuccess(true)} />
 
       <SignUpSuccess
         alertSignUpSuccess={alertSignUpSuccess.activeOrNot}

@@ -1,0 +1,135 @@
+@import '../../../../assets/scss/default';
+
+.userInfo,
+.sideMovie {
+  padding: 30px 10px;
+}
+
+.userInfo {
+  h3 {
+    color: $fontDark;
+    width: fit-content;
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+      height: 2px;
+      background-color: $secondary;
+    }
+  }
+
+  ul {
+    padding: 30px 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 30px;
+
+    li {
+      text-align: left;
+      width: 90%;
+      label {
+        font-size: 0.875rem;
+        padding-bottom: 10px;
+        color: $fontDark;
+      }
+      input {
+        border: 1px solid $fontLight;
+        padding: 5px 10px;
+        width: 100%;
+        color: $fontDark;
+        &:focus {
+          border: 1px solid $fontDark;
+        }
+      }
+    }
+  }
+
+  button {
+    font-size: 0.75rem;
+    background-color: $secondary;
+    color: #fff;
+    padding: 5px 20px;
+  }
+
+  .inputError {
+    color: red;
+    font-size: 0.875rem;
+  }
+
+  .errorInput {
+    border: 1px solid red;
+  }
+  .userMovies {
+    padding: 30px 0;
+  }
+
+  .orderedMovieList {
+    table {
+      font-size: 0.875rem;
+      table-layout: auto;
+      width: 100%;
+    }
+    thead {
+      width: 100%;
+      color: #fff;
+      background-color: #47251c;
+
+      th {
+        text-align: center;
+        padding: 5px;
+        font-weight: 400;
+      }
+    }
+    tbody {
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      td {
+        border: 1px solid $fontLight;
+        text-align: center;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+.sideMovie {
+  display: none;
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .userInfo {
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+
+    button {
+      font-size: 1rem;
+    }
+  }
+
+  .sideMovie {
+    display: block;
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .userInfo {
+    ul li input {
+      width: 300px;
+    }
+
+    .orderedMovieList {
+      table {
+        font-size: 1rem;
+      }
+    }
+  }
+}

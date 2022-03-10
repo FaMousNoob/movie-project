@@ -9,6 +9,8 @@ import {
 } from '../../../../store/actions/movie.actions';
 import { useSelector } from 'react-redux';
 import './booking.component.scss';
+import { useNavigate } from 'react-router-dom';
+import { showLoginSignUpAction } from '../../../../store/actions/login-sign-up.action';
 
 function Booking() {
   const [movies, setmovies] = useState({
@@ -19,6 +21,7 @@ function Booking() {
   });
   const { movieList, movieDetail } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getMovieListAction());
@@ -52,10 +55,10 @@ function Booking() {
     ));
   };
 
+  //render the second box
   const renderTheaterList = () => {
     if (movieDetail.lichChieu) {
       if (movies.maPhim === movieDetail.maPhim) {
-        console.log('render');
         const listTheater = [];
         movieDetail.lichChieu?.forEach((theater) => {
           const index = listTheater.indexOf(theater.thongTinRap.tenCumRap);
@@ -99,7 +102,6 @@ function Booking() {
       return (
         <div className='containFalseMovie'>
           <p className='returnLoading'>
-            {' '}
             <FontAwesomeIcon
               icon={solid('circle-notch')}
               className='loadingPickTheater'
@@ -130,6 +132,17 @@ function Booking() {
     }
   }
 
+  //check userexist to open login or go to booking ticket page
+  const checkUserExist = (malichChieu) => {
+    const userExist = JSON.parse(localStorage.getItem('userLogin'));
+    if (userExist) {
+      navigate(`/booking/${malichChieu}`);
+    } else {
+      dispatch(showLoginSignUpAction(true));
+    }
+  };
+
+  //render the third box
   const renderShowTimes = () => {
     if (movies.dayShowTime.toString() !== '') {
       return movies.dayShowTime?.map((day, index) => (
@@ -151,8 +164,13 @@ function Booking() {
                   time.thongTinRap.tenCumRap === movies.theater &&
                   day === ngayChieu
                 ) {
-                  console.log(time);
-                  return <button key={index}>{gioChieu}</button>;
+                  return (
+                    <button
+                      onClick={() => checkUserExist(time.maLichChieu)}
+                      key={index}>
+                      {gioChieu}
+                    </button>
+                  );
                 }
                 return '';
               })}

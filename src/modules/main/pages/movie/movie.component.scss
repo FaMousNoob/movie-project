@@ -1,6 +1,23 @@
 @import '../../../../assets/scss/default';
 
 .movies {
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   padding-top: 20px;
   .hotMovieTitle {
     border-bottom: 1px solid #ddd;
@@ -76,6 +93,10 @@
           font-size: 0.875rem;
         }
       }
+
+      #loadingHotMovies {
+        height: 298px;
+      }
     }
   }
 }
@@ -89,6 +110,9 @@
             padding: 13px 30px;
             font-size: 0.875rem;
           }
+        }
+        #loadingHotMovies {
+          height: 306px;
         }
       }
     }
@@ -109,6 +133,9 @@
             font-size: 1rem;
           }
         }
+        #loadingHotMovies {
+          height: 409px;
+        }
       }
     }
   }
@@ -118,6 +145,11 @@
   .movies {
     .hotMovieWrapper {
       grid-template-columns: 1fr 1fr 1fr 1fr;
+      .hotMovieBox {
+        #loadingHotMovies {
+          height: 354px;
+        }
+      }
     }
   }
 }

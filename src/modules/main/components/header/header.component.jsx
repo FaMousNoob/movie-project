@@ -3,16 +3,18 @@ import './header.component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { showLoginSignUpAction } from '../../../../store/actions/login-sign-up.action';
 
-function Header(props) {
+function Header() {
   //drop down menu in phone screen
   const [activeDropDown, setactiveDropDown] = useState({ isTrueOrNot: false });
+  const dispatch = useDispatch();
   const handleDropDown = () => {
     setactiveDropDown({
       ...activeDropDown,
       isTrueOrNot: !activeDropDown.isTrueOrNot,
     });
-    console.log(activeDropDown.isTrueOrNot);
   };
 
   //logout function
@@ -24,7 +26,6 @@ function Header(props) {
   //if user exist, show logout btn, else show login btn
   const checkUser = JSON.parse(localStorage.getItem('userLogin'));
   //render login or sign up btn
-  console.log(checkUser);
   const loginOrSignOutBtn = () => {
     if (checkUser) {
       const splitName = checkUser.hoTen.split(' ');
@@ -43,14 +44,22 @@ function Header(props) {
           <ul
             className='dropdown-menu dropDownUser'
             aria-labelledby='dropdownMenuButton1'>
-            <li>Tài khoản</li>
+            <li>
+              <NavLink className='user' to='/user'>
+                Tài khoản
+              </NavLink>
+            </li>
             <li onClick={handleSignOut}>Thoát</li>
           </ul>
         </div>
       );
     } else {
       return (
-        <button className='navLogin' onClick={() => props.onClick()}>
+        <button
+          className='navLogin'
+          onClick={() => {
+            dispatch(showLoginSignUpAction(true));
+          }}>
           <FontAwesomeIcon icon={solid('user')} />
           Đăng nhập
         </button>

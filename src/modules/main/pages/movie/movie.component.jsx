@@ -6,23 +6,25 @@ import { Link } from 'react-router-dom';
 import { getMovieListAction } from '../../../../store/actions/movie.actions';
 
 function Movie() {
-  // const [windowWidth, setwindowWidth] = useState(window.screen.availWidth);
   const movieList = useSelector((state) => state.movie.movieList);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieListAction());
     return dispatch;
   }, [dispatch]);
-  console.log(movieList);
+  const anArray = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+  ];
 
-  // const handleRenderSideBar = () => {
-  //   setwindowWidth(window.innerWidth);
-  // };
+  const renderLoadingMovies = () =>
+    anArray.map((movie, index) => (
+      <div className='hotMovieBox' key={index}>
+        <div className='hotMoviePic skeleton' id='loadingHotMovies'></div>
+      </div>
+    ));
 
-  // window.addEventListener('resize', handleRenderSideBar);
-
-  const handleRender6Movie = () => {
-    return movieList?.slice(0, 18).map((movie, index) => (
+  const handleRender6Movie = () =>
+    movieList?.slice(0, 18).map((movie, index) => (
       <div className='hotMovieBox' key={index}>
         <Link to={`/movie-detail/${movie.maPhim}`}>
           <div className='hotMoviePic'>
@@ -35,14 +37,15 @@ function Movie() {
         </div>
       </div>
     ));
-  };
 
   return (
     <div className='movies container'>
       <div className='hotMovieTitle'>
         <h3>PHIM ĐANG CHIẾU</h3>
       </div>
-      <div className='hotMovieWrapper'>{handleRender6Movie()}</div>
+      <div className='hotMovieWrapper'>
+        {movieList.length !== 0 ? handleRender6Movie() : renderLoadingMovies()}
+      </div>
     </div>
   );
 }

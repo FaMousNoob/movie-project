@@ -1,0 +1,307 @@
+@import '../../../../assets/scss/default';
+
+$dangChonColor: #7dc71d;
+$daBanColor: #e11c01;
+$CoTheChonColor: #dbdee1;
+.bookingTicket {
+  padding: 20px 30px;
+  .bookingInfo {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 30px;
+    img {
+      width: 100%;
+    }
+
+    .loadingImg {
+      margin: 0 auto;
+      height: 140px;
+      width: 94px;
+    }
+
+    .loadingTitle {
+      margin-top: 10px;
+      height: 1rem;
+      width: 100px;
+    }
+
+    .loadingP {
+      display: inline-block;
+      height: 0.75rem;
+      width: 70px;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    ul {
+      padding-top: 20px;
+      p {
+        border-top: 1px solid $fontLight;
+        padding: 10px 0;
+        margin: 0;
+        font-size: 0.815rem;
+        color: $fontDark;
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+    .warningListChair {
+      color: red;
+    }
+  }
+
+  .bookingChairs {
+    background-color: $secondary;
+    padding: 10px;
+    h3 {
+      font-size: 1.125rem;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    .chairs {
+      min-height: 400px;
+      overflow: scroll;
+      padding: 10px;
+      background-color: #fff;
+      p {
+        font-size: 0.875rem;
+      }
+
+      .screen {
+        padding: 10px;
+        text-align: center;
+        display: block;
+        margin: 20px auto;
+        width: 250px;
+        border-top: 3px solid $fontLight;
+        border-radius: 2px;
+      }
+
+      ul {
+        margin: 0 auto 20px;
+        width: fit-content;
+        li {
+          margin: 5px 10px;
+          display: flex;
+          align-items: center;
+          p {
+            color: $fontDark;
+            margin: 0;
+          }
+
+          span {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            &::before {
+              content: '';
+              display: block;
+              width: 10px;
+              height: 10px;
+            }
+          }
+
+          .span1 {
+            background-color: $dangChonColor;
+          }
+          .span2 {
+            background-color: $daBanColor;
+          }
+          .span3 {
+            background-color: $CoTheChonColor;
+          }
+        }
+      }
+    }
+
+    .listChair {
+      margin: 0 auto;
+      width: fit-content;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-gap: 8px 5px;
+      button {
+        color: $fontDark;
+        width: 25px;
+        height: 25px;
+        font-size: 0.75rem;
+        background-color: $CoTheChonColor;
+      }
+
+      .dangChon {
+        background-color: $dangChonColor;
+        color: #fff;
+      }
+      .daBan {
+        background-color: $daBanColor;
+        color: #fff;
+        &:hover {
+          cursor: default;
+        }
+      }
+      .coTheChon {
+        background-color: $CoTheChonColor;
+      }
+    }
+  }
+
+  .bookingBtns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    button {
+      transition: all, 0.3s;
+
+      color: white;
+      background-color: $secondary;
+      padding: 10px 30px;
+      &:hover {
+        background-color: #e26435;
+      }
+    }
+    .arrowLeft {
+      padding-right: 10px;
+    }
+    .arrowRight {
+      padding-left: 10px;
+    }
+  }
+
+  .btnWindow {
+    display: none;
+  }
+
+  .notShow {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .bookingSuccess {
+    transition: all, 0.3s;
+    touch-action: none;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.245);
+    .successBox {
+      transition: all, 0.3s;
+
+      padding: 30px;
+      touch-action: none;
+      width: 95%;
+      max-width: 500px;
+      background-color: #fff;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      h3 {
+        color: $secondary;
+        padding: 20px 0;
+      }
+
+      .checkMark {
+        font-size: 2rem;
+        color: $secondary;
+        padding: 25px 27px;
+        border-radius: 100px;
+        border: 3px solid $secondary;
+      }
+
+      button {
+        transition: all, 0.3s;
+        border: 1px solid $secondary;
+        color: $secondary;
+        padding: 5px 20px;
+        margin: 30px 10px;
+
+        &:hover {
+          background-color: $secondary;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $ipadWidth) {
+  .bookingTicket {
+    .bookingInfo {
+      width: 100%;
+
+      .loadingImg {
+        width: 210px;
+        height: 310px;
+      }
+    }
+
+    .bookingChairs {
+      .chairs {
+        overflow: hidden;
+        ul {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+
+    .bookingSuccess {
+      .successBox {
+        button {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .bookingTicket {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .bookingInfo {
+      width: 350px;
+      h2 {
+        margin-top: 5px;
+        font-size: 1rem;
+      }
+      .imgContain {
+        text-align: center;
+        img {
+          width: 200px;
+        }
+      }
+    }
+    .bookingChairs {
+      margin-right: 20px;
+      width: 70%;
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+    .btnPhone {
+      display: none;
+    }
+    .btnWindow {
+      display: block;
+    }
+  }
+}

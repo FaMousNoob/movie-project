@@ -96,8 +96,6 @@ function CarouselHome() {
         </div>
         <div className='carousel-inner position-relative'>
           {renderCarouselPic()}
-
-          {/* <QuickBuyTicket /> */}
         </div>
         <button
           className='carousel-control-prev carouselNextPreviousBtn'

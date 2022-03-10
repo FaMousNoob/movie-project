@@ -5,6 +5,7 @@
     line-height: 2.5rem;
     display: inline-block;
     font-size: 1.13rem;
+    color: $fontDark;
     &::after {
       display: block;
       content: '';
@@ -25,19 +26,22 @@
       text-decoration: none;
       color: $fontDark;
       box-sizing: border-box;
-    }
+      img {
+        height: 72%;
+        width: 100%;
+      }
 
-    img {
-      height: 72%;
-      width: 100%;
+      p {
+        text-transform: uppercase;
+        height: 28%;
+        display: block;
+        margin: 0;
+        font-size: 0.875rem;
+      }
     }
-
-    p {
-      text-transform: uppercase;
-      height: 28%;
-      display: block;
-      margin: 0;
-      font-size: 0.875rem;
+    #loadingSideMovies {
+      height: 145px;
+      margin-bottom: 40px;
     }
   }
   .containXemThem {
@@ -64,9 +68,12 @@
     .sideMoviesContain {
       .moviesEach {
         height: 300px;
+        p {
+          font-size: 1rem;
+        }
       }
-      p {
-        font-size: 1rem;
+      #loadingSideMovies {
+        height: 216px;
       }
     }
 
@@ -90,6 +97,9 @@
         p {
           height: 7%;
         }
+      }
+      #loadingSideMovies {
+        height: 260px;
       }
     }
   }

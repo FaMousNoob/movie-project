@@ -13,6 +13,15 @@ function SideMovies() {
   useEffect(() => {
     dispatch(getMovieListAction());
   }, [dispatch]);
+  const anArray = [1, 2, 3, 4, 5, 6];
+
+  const renderMoviesLoading = () => {
+    return anArray?.map((movie, index) => (
+      <div key={index} className='moviesEach skeleton' id='loadingSideMovies'>
+        <p></p>
+      </div>
+    ));
+  };
 
   const renderMovies = () => {
     return movieList?.slice(0, 6).map((movie, index) => (
@@ -28,7 +37,9 @@ function SideMovies() {
   return (
     <section className=' sideMovies'>
       <h3>PHIM ĐANG CHIẾU</h3>
-      <div className='sideMoviesContain'>{renderMovies()}</div>
+      <div className='sideMoviesContain'>
+        {movieList.length !== 0 ? renderMovies() : renderMoviesLoading()}
+      </div>
       <div className='containXemThem'>
         <button onClick={() => navigate('/movie')}>
           XEM THÊM

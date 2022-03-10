@@ -4,10 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Login from '../../pages/login/login.component';
 import SignUp from '../../pages/sign-up/sign-up.component';
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { showLoginSignUpAction } from '../../../../store/actions/login-sign-up.action';
 function LoginSignUp(props) {
   //props from mainTemplate
   console.log(props);
+  const dispatch = useDispatch();
+  const showComponentOrNot = useSelector(
+    (state) => state.activeLoginSignUp.activeLoginSignUp
+  );
+  console.log(showComponentOrNot);
   const [isLoginOrSignUp, setisLoginOrNot] = useState({ loginOrSignUp: true });
 
   const handleLoginOrSignUp = (value) =>
@@ -19,15 +26,15 @@ function LoginSignUp(props) {
   return (
     <section>
       <div
-        onClick={() => props.onClick()}
+        onClick={() => dispatch(showLoginSignUpAction(false))}
         className={
           'loginContain ' +
-          (props.loginSignUpState ? 'isShowTitleLogin' : 'NotShowTitleLogin')
+          (showComponentOrNot ? 'isShowTitleLogin' : 'NotShowTitleLogin')
         }></div>
       <div
         className={
           'loginTitle ' +
-          (props.loginSignUpState ? 'showLoginTitle' : 'notShowLoginTitle')
+          (showComponentOrNot ? 'showLoginTitle' : 'notShowLoginTitle')
         }>
         <div className='loginBtns'>
           <button
@@ -51,7 +58,9 @@ function LoginSignUp(props) {
           </button>
         </div>
 
-        <button className='loginX' onClick={() => props.onClick()}>
+        <button
+          className='loginX'
+          onClick={() => dispatch(showLoginSignUpAction(false))}>
           <FontAwesomeIcon icon={solid('xmark')} className='xFont' />
         </button>
         {isLoginOrSignUp.loginOrSignUp ? (
@@ -59,7 +68,7 @@ function LoginSignUp(props) {
         ) : (
           <SignUp
             //this onClick is to deactive login-signup component
-            onClick={() => props.onClick()}
+            onClick={() => dispatch(showLoginSignUpAction(false))}
             //this onClick is to active SignUpSuccess component
             handleSignUpSuccessOn={() => props.handleSignUpSuccessOn()}
           />
