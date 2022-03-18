@@ -23,15 +23,29 @@ function Header() {
     window.location.reload(false);
   };
 
-  //if user exist, show logout btn, else show login btn
   const checkUser = JSON.parse(localStorage.getItem('userLogin'));
+  const handleAdminBtn = () => {
+    if (checkUser) {
+      if (checkUser.maLoaiNguoiDung === 'QuanTri') {
+        return (
+          <li>
+            <NavLink className='user' to='/admin/user-management'>
+              Admin
+            </NavLink>
+          </li>
+        );
+      }
+    }
+  };
+
+  //if user exist, show logout btn, else show login btn
   //render login or sign up btn
   const loginOrSignOutBtn = () => {
     if (checkUser) {
       const splitName = checkUser.hoTen.split(' ');
       const lastName = splitName.pop();
       return (
-        <div className='dropdown '>
+        <div className='dropdown dropDownHead'>
           <button
             className='signOutBtn btn btn-secondary dropdown-toggle'
             type='button'
@@ -44,12 +58,17 @@ function Header() {
           <ul
             className='dropdown-menu dropDownUser'
             aria-labelledby='dropdownMenuButton1'>
+            {handleAdminBtn()}
             <li>
               <NavLink className='user' to='/user'>
                 Tài khoản
               </NavLink>
             </li>
-            <li onClick={handleSignOut}>Thoát</li>
+            <li>
+              <button className='user' onClick={handleSignOut}>
+                Thoát
+              </button>
+            </li>
           </ul>
         </div>
       );

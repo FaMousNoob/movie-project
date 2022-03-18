@@ -48,6 +48,10 @@ $CoTheChonColor: #dbdee1;
         span {
           font-weight: 500;
         }
+        .giaGhe {
+          font-size: 1.125rem;
+          color: $secondary;
+        }
       }
     }
     .warningListChair {
@@ -161,7 +165,7 @@ $CoTheChonColor: #dbdee1;
 
       color: white;
       background-color: $secondary;
-      padding: 10px 30px;
+      padding: 10px 10px;
       &:hover {
         background-color: #e26435;
       }
@@ -182,10 +186,6 @@ $CoTheChonColor: #dbdee1;
     visibility: hidden;
     opacity: 0;
   }
-  .show {
-    visibility: visible;
-    opacity: 1;
-  }
 
   .bookingSuccess {
     transition: all, 0.3s;
@@ -198,9 +198,8 @@ $CoTheChonColor: #dbdee1;
     width: 100vw;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.245);
-    .successBox {
+    .successOrFalseBox {
       transition: all, 0.3s;
-
       padding: 30px;
       touch-action: none;
       width: 95%;
@@ -216,6 +215,11 @@ $CoTheChonColor: #dbdee1;
         padding: 20px 0;
       }
 
+      p {
+        padding: 10px 0;
+        color: $fontDark;
+      }
+
       .checkMark {
         font-size: 2rem;
         color: $secondary;
@@ -224,7 +228,7 @@ $CoTheChonColor: #dbdee1;
         border: 3px solid $secondary;
       }
 
-      button {
+      .successBtn {
         transition: all, 0.3s;
         border: 1px solid $secondary;
         color: $secondary;
@@ -234,6 +238,19 @@ $CoTheChonColor: #dbdee1;
         &:hover {
           background-color: $secondary;
           color: #fff;
+        }
+      }
+
+      .xMark {
+        transition: color, 0.3s;
+        padding: 5px;
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        font-size: 2rem;
+        color: $fontLight;
+        &:hover {
+          color: $fontDark;
         }
       }
     }
@@ -260,9 +277,12 @@ $CoTheChonColor: #dbdee1;
         }
       }
     }
+    .bookingBtns button {
+      padding: 10px 30px;
+    }
 
-    .bookingSuccess {
-      .successBox {
+    .successOrFalseBox {
+      .bookingSuccess {
         button {
           font-size: 1.2rem;
         }

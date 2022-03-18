@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '../configs/api.configs';
+import { apiVersion, baseUrl } from '../configs/api.configs';
 
 export const userInfoApi = (user) =>
   axios.post(`${baseUrl}/QuanLyNguoiDung/ThongTinTaiKhoan`, user);
@@ -12,4 +12,27 @@ export const updateUserInfoApi = (userInfo) => {
     newInfo,
     { headers: { Authorization: `Bearer ${user.accessToken}` } }
   );
+};
+
+export const userListApi = () =>
+  axios.get(
+    `${baseUrl}/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${apiVersion}`
+  );
+
+export const deleteUserApi = (user) => {
+  const userAdmin = JSON.parse(localStorage.getItem('userLogin'));
+
+  return axios.delete(
+    `${baseUrl}/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
+    {
+      headers: { Authorization: `Bearer ${userAdmin.accessToken}` },
+    }
+  );
+};
+
+export const createUserApi = (user) => {
+  const userAdmin = JSON.parse(localStorage.getItem('userLogin'));
+  return axios.post(`${baseUrl}/QuanLyNguoiDung/ThemNguoiDung`, user, {
+    headers: { Authorization: `Bearer ${userAdmin.accessToken}` },
+  });
 };

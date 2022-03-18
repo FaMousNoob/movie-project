@@ -67,8 +67,6 @@ function User() {
       );
     });
 
-  console.log(initialValues);
-
   const handleSubmit = (values) => {
     dispatch(updateUserInfoAction(values));
     window.location.reload(false);

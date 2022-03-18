@@ -104,27 +104,27 @@
         font-size: 1.5rem;
       }
     }
+
     .dropDownUser {
       padding: 0;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
       background: #fff;
 
-      li,
       .user {
-        color: $fontLight;
+        letter-spacing: 1px;
+        width: 100%;
+        display: inline-block;
+        padding: 12px 20px;
         transition: all, 0.3s;
-        font-size: 0.75rem;
         text-decoration: none;
+        text-align: left;
+        font-size: 0.75rem;
+        color: $fontLight;
 
         &:hover {
           color: $secondary;
           cursor: pointer;
         }
-      }
-
-      li {
-        letter-spacing: 1px;
-        padding: 12px 20px;
       }
     }
 
@@ -133,7 +133,7 @@
         padding: 10px 15px;
         font-size: 1.6rem;
         color: $fontLight;
-        z-index: 999;
+        z-index: 5;
       }
       button .xMark {
         font-size: 2rem;

@@ -3,6 +3,7 @@ import './carousel.component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import PopUpTrailer from '../../../components/pop-up-trailer/pop-up-trailer.component';
+import { Link } from 'react-router-dom';
 
 function CarouselHome() {
   const [showTrailer, setshowTrailer] = useState({ isTrueOrNot: false });
@@ -24,33 +25,25 @@ function CarouselHome() {
   const carouselData = [
     {
       id: 0,
+      maPhim: 10311,
       tenPhim: 'chuyện Ma Gần Nhà',
       img: '/images/chuyen-ma-gan-nha.jpg',
       trailer: 'https://www.youtube.com/embed/iPPNEYMEO7M',
     },
     {
       id: 1,
+      maPhim: 10312,
       tenPhim: 'Death Of The Nile',
       img: '/images/an-mang-tren-song-nile.jpg',
       trailer: 'https://www.youtube.com/embed/vjqcipRSARg',
     },
+
     {
       id: 2,
-      tenPhim: 'Moonfall',
-      img: '/images/moon-fall.jpg',
-      trailer: 'https://www.youtube.com/embed/grjSTCfYLG8',
-    },
-    {
-      id: 3,
+      maPhim: 10313,
       tenPhim: 'House Of Gucci',
       img: '/images/house-of-gucci.jpg',
       trailer: 'https://www.youtube.com/embed/y2AweBD1RSc',
-    },
-    {
-      id: 4,
-      tenPhim: 'Spider-Man No Way Home',
-      img: '/images/spiderman-nwh.jpg',
-      trailer: 'https://www.youtube.com/embed/JfVOs4VSpmA',
     },
   ];
 
@@ -72,7 +65,10 @@ function CarouselHome() {
         className={
           'carousel-item carouselImgBox ' + (each.id === 0 ? 'active' : '')
         }>
-        <img src={each.img} className='d-block w-100' alt='trailer' />
+        <Link to={`/movie-detail/${each.maPhim}`}>
+          <img src={each.img} className='d-block w-100' alt='trailer' />
+        </Link>
+
         <button
           className='carouselBtn'
           onClick={() => {

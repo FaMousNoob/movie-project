@@ -1,3 +1,7 @@
+import MovieAdd from '../modules/admin/pages/movie-add/movie-add.component';
+import MovieManagement from '../modules/admin/pages/movie-management/movie-management.component';
+import UserAdd from '../modules/admin/pages/user-add/user-add.component';
+import UserManagement from '../modules/admin/pages/user-management/user-management.component';
 import BookingTicket from '../modules/main/components/booking-ticket/booking-ticket.component';
 import Error from '../modules/main/components/error/error';
 import MovieDetail from '../modules/main/components/movie-detail/movie-detail.component';
@@ -19,4 +23,11 @@ export const mainRoutes = [
 export const mainUserRoutes = [
   { path: '/user', Element: User },
   { path: '/booking/:id', Element: BookingTicket },
+];
+
+export const adminRoutes = [
+  { path: '/admin/user-management', Element: UserManagement },
+  { path: '/admin/movie-management', Element: MovieManagement },
+  { path: '/admin/user-add', Element: UserAdd },
+  { path: '/admin/movie-add', Element: MovieAdd },
 ];

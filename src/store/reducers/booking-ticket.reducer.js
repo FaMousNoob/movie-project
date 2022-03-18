@@ -9,7 +9,6 @@ export const bookingTicketReducer = (state = initialState, action) => {
   switch (type) {
     case GET_CHAIR_LIST:
       state.booking = payload;
-      console.log(state.booking);
       return { ...state };
 
     case CHOICE_CHAIR: {

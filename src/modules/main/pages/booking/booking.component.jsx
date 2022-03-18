@@ -41,7 +41,7 @@ function Booking() {
 
   //render movieList
   const renderMovieList = () => {
-    return movieList?.slice(0, 20).map((movie, index) => {
+    return movieList?.map((movie, index) => {
       const protocal = 'https';
       const splitImgUrl = movie.hinhAnh.split('http');
       const httpsImg = protocal.concat(splitImgUrl[1]);

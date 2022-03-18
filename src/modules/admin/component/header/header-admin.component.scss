@@ -1,0 +1,99 @@
+@import '../../../../assets/scss/default';
+
+.headerAdmin {
+  background-color: #f7f9fa;
+  .headerAdmin2 {
+    display: flex;
+    justify-content: space-between;
+
+    .rotateNavBtn {
+      transform: rotate(90deg);
+    }
+    .navBtn {
+      transition: all, 0.5s;
+      padding: 10px;
+      font-size: 1.5rem;
+      color: $fontLight;
+    }
+
+    .userAdmin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        color: $fontLight;
+        margin: 0;
+      }
+
+      .dropDownHeader {
+        background: transparent;
+        color: $fontLight;
+        border: none;
+        &:focus {
+          color: $secondary;
+          box-shadow: none;
+        }
+      }
+
+      ul {
+        padding: 0;
+        .btn {
+          display: inline-block;
+          width: 100%;
+          padding: 10px 10px;
+          text-align: left;
+          color: $fontLight;
+          &:hover {
+            color: $secondary;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .notShowNavBarSideBox {
+    left: -100%;
+    opacity: 0;
+  }
+  .ShowNavBarSideBox {
+    left: 50%;
+  }
+
+  .navBarSideBox {
+    transition: all, 0.5s;
+    position: relative;
+
+    .navBarSide {
+      transition: all, 0.5s;
+      touch-action: none;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      height: fit-content;
+      width: 100%;
+      background: #f7f9fa;
+      text-align: center;
+
+      .adminNavLink {
+        transition: color, 0.3s;
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-weight: 500;
+        color: $fontLight;
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .headerAdmin .headerAdmin2 {
+    .navBtn {
+      visibility: hidden;
+    }
+  }
+}

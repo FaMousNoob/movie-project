@@ -1,0 +1,106 @@
+@import '../../../../assets/scss/default';
+
+.movieManage {
+  padding-top: 30px;
+  .movieList {
+    padding-bottom: 20px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: $fontDark;
+    &::after {
+      margin-top: 5px;
+      display: block;
+      content: '';
+      height: 2px;
+      width: 50%;
+      background-color: $secondary;
+    }
+  }
+  input {
+    width: 50%;
+    padding: 5px 10px;
+    border: 1px solid $fontLight;
+    &:focus {
+      border: 1px solid $fontDark;
+    }
+  }
+  .searchBtn {
+    transition: background, 0.3s;
+    background: $secondary;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 20px;
+    color: #fff;
+    &:hover {
+      background: rgb(193, 74, 6);
+    }
+  }
+  table {
+    width: 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-top: 20px;
+    table-layout: auto;
+    thead {
+      white-space: nowrap;
+      background: #47251c;
+      color: #fff;
+
+      th {
+        padding: 5px 10px;
+      }
+    }
+    tbody {
+      td {
+        height: fit-content;
+        width: fit-content;
+        padding: 5px 10px;
+        border: 1px solid $fontLight;
+        img {
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  .movePageBtn {
+    padding: 20px 20px 0 0;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .prevNextBtn {
+      color: $fontDark;
+      transition: all, 0.3s;
+      padding: 0 10px;
+      .arrow {
+        padding: 0 5px;
+      }
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+
+    ul {
+      display: flex;
+
+      .active {
+        border: 2px solid $secondary;
+        color: $secondary;
+      }
+      button {
+        color: $fontDark;
+        transition: all, 0.3s;
+        &:hover {
+          color: $secondary;
+        }
+        margin: 0 5px;
+        height: 30px;
+        width: 30px;
+        border-bottom: 2px solid $secondary;
+      }
+    }
+  }
+}

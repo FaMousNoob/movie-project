@@ -1,0 +1,17 @@
+@import '../../../assets/scss/default';
+.adminTemplate {
+  display: flex;
+  .sideBarContain {
+    display: none;
+  }
+}
+
+@media screen and(min-width: $mediumWidth) {
+  .adminTemplate {
+    display: flex;
+    .sideBarContain {
+      display: block;
+      height: 100%;
+    }
+  }
+}

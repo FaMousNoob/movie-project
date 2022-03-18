@@ -12,10 +12,13 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './booking-ticket.component.scss';
 
 function BookingTicket() {
-  const [listChair, setlistChair] = useState({ chairs: '' });
-  const [showorderedSuccess, setshoworderedSuccess] = useState({
-    isTrueOrNot: false,
+  const [listChair, setlistChair] = useState({ chairs: '', tongGiaVe: 0 });
+  const [showSuccessOrFalseAlert, setshowSuccessOrFalseAlert] = useState({
+    success: false,
+    falsely: false,
   });
+
+  // showorderedSuccess
   const { booking } = useSelector((state) => state.bookingTicket);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -76,20 +79,45 @@ function BookingTicket() {
       }
     });
     if (chairs.join(', ') !== listChair.chairs) {
-      setlistChair({ chairs: chairs.join(', ') });
+      setlistChair({ ...listChair, chairs: chairs.join(', ') });
     }
+    return listChair.chairs;
   };
-  renderNumOfChair();
 
-  const showOrderedSuccess = () => {
-    setshoworderedSuccess({ isTrueOrNot: true });
+  //render tong gia ve
+  const renderTotalCost = () => {
+    let total = 0;
+    booking.danhSachGhe?.forEach((chair) => {
+      if (chair.dangChon) {
+        total += parseInt(chair.giaVe);
+      }
+    });
+    if (total !== listChair.tongGiaVe) {
+      setlistChair({ ...listChair, tongGiaVe: total });
+    }
+    return listChair.tongGiaVe;
+  };
+
+  //if order success, this function runs onClick from dat ghe button
+  const showSuccessOrFalse = (name, trueOrFalse) => {
+    setshowSuccessOrFalseAlert({
+      ...showSuccessOrFalseAlert,
+      [name]: trueOrFalse,
+    });
   };
 
   //dispatch to orderChairs
   const orderChair = () => {
-    const orderedChair = booking.danhSachGhe.filter((chair) => chair.dangChon);
-    dispatch(orderChairAction(id, orderedChair));
-    showOrderedSuccess();
+    const total = booking.danhSachGhe.some((chair) => chair.dangChon);
+    if (total) {
+      const orderedChair = booking.danhSachGhe.filter(
+        (chair) => chair.dangChon
+      );
+      dispatch(orderChairAction(id, orderedChair));
+      showSuccessOrFalse('success', true);
+    } else {
+      showSuccessOrFalse('falsely', true);
+    }
   };
 
   //render the previous and booking buttons
@@ -156,7 +184,13 @@ function BookingTicket() {
               <li>
                 <p>
                   <span>Ghế: </span>
-                  {listChair.chairs}
+                  {renderNumOfChair()}
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>Tổng: </span>
+                  <span className='giaGhe'>{renderTotalCost()} VNĐ</span>
                 </p>
               </li>
               <li>
@@ -192,26 +226,40 @@ function BookingTicket() {
 
       <div
         className={
-          'bookingSuccess ' +
-          (showorderedSuccess.isTrueOrNot ? 'show' : 'notShow')
+          'bookingSuccess ' + (showSuccessOrFalseAlert.success ? '' : 'notShow')
         }>
-        <div className='successBox'>
+        <div className='successOrFalseBox'>
           <h3>ĐẶT GHẾ THÀNH CÔNG</h3>
           <FontAwesomeIcon icon={solid('check')} className='checkMark' />
+          <p>Mời bạn về trang thông tin tài khoản để xem vé đã đặt</p>
           <div>
             <button
+              className='successBtn'
               onClick={() => {
-                navigate('/');
+                navigate('/user');
               }}>
-              Trang chủ
+              Tài Khoản
             </button>
             <button
+              className='successBtn'
               onClick={() => {
                 window.location.reload(false);
               }}>
               Tiếp tục
             </button>
           </div>
+        </div>
+      </div>
+      <div
+        onClick={() => showSuccessOrFalse('falsely', false)}
+        className={
+          'bookingSuccess ' + (showSuccessOrFalseAlert.falsely ? '' : 'notShow')
+        }>
+        <div className='successOrFalseBox'>
+          <h3>VUI LÒNG CHỌN GHẾ</h3>
+          <button className='xMark'>
+            <FontAwesomeIcon icon={solid('xMark')} />
+          </button>
         </div>
       </div>
     </section>

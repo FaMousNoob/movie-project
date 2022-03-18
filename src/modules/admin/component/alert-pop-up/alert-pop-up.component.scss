@@ -1,0 +1,56 @@
+@import '../../../../assets/scss/default';
+
+.alertMain {
+  .bgNone {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .alertContainNone {
+    visibility: hidden;
+    top: -100%;
+  }
+  .alertContainShow {
+    top: 10%;
+  }
+
+  .alertBg {
+    transition: all, 0.5s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.238);
+  }
+  .alertContain {
+    transition: all, 0.5s;
+    padding: 20px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 500px;
+    min-height: 200px;
+    text-align: center;
+    background: #fff;
+
+    h3,
+    p {
+      padding-top: 40px;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: $secondary;
+    }
+    p {
+      color: $fontDark;
+    }
+    button {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: $fontLight;
+    }
+  }
+}

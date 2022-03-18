@@ -24,7 +24,7 @@ function Movie() {
     ));
 
   const handleRender6Movie = () =>
-    movieList?.slice(0, 18).map((movie, index) => {
+    movieList?.map((movie, index) => {
       const protocal = 'https';
       const splitImgUrl = movie.hinhAnh.split('http');
       const httpsImg = protocal.concat(splitImgUrl[1]);

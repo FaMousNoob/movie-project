@@ -2,9 +2,8 @@ import { signUpApi } from '../../api/sign-up.api';
 
 export const signUpAction = (user) => async (dispatch) => {
   try {
-    const res = await signUpApi(user);
-    console.log(res.data);
+    await signUpApi(user);
   } catch (error) {
-    console.log(error);
+    return false;
   }
 };
