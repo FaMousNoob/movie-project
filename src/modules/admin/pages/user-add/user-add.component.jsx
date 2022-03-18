@@ -43,7 +43,7 @@ function UserAdd() {
       .email('Email không hợp lệ')
       .required('Email không để trống'),
     soDt: Yup.string()
-      .matches(/^(?:[1-9]|0[1-9]|10)$/, 'số điện thoại không hợp lệ')
+      .matches(/^[0][0-9]{9}$/g, 'số điện thoại không hợp lệ')
       .required('số điện thoại không để trống'),
     maLoaiNguoiDung: Yup.string().min(2, 'Loại người dùng chưa được chọn'),
   });
