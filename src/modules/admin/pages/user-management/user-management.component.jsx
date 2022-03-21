@@ -51,16 +51,11 @@ function UserManagement() {
   //search handle
   const handleSearch = (e) => {
     e.preventDefault();
-    const listUserSearch = [];
-    userList.forEach((user) => {
-      if (
-        user.taiKhoan.toLowerCase().includes(state.findUserInput.toLowerCase())
-      ) {
-        listUserSearch.push(user);
-      }
-    });
-    setstate({ ...state, userSearchList: listUserSearch, pageRender: 0 });
-    if (listUserSearch.length === 0) {
+    const result = userList.filter((user) =>
+      user.taiKhoan.toLowerCase().includes(state.findUserInput.toLowerCase())
+    );
+    setstate({ ...state, userSearchList: result, pageRender: 0 });
+    if (result.length === 0) {
       localStorage.setItem('searchFailed', '{"user":"failed"}');
       localStorage.setItem('adminUserFailed', '{"user":"failed"}');
     }
@@ -111,6 +106,17 @@ function UserManagement() {
     ));
   };
 
+  const handleDeleteUser = async (user) => {
+    const data = await deleteUserAction(user.taiKhoan);
+    dispatch(getUserListAction());
+    if (data === 'Xóa thành công!') {
+      const userSearchList = state.userSearchList;
+      const index = userSearchList.indexOf(user);
+      userSearchList.splice(index, 1);
+      setstate({ ...state, userSearchList: userSearchList });
+    }
+  };
+
   const renderUserList = () => {
     const UserList =
       state.userSearchList.length === 0 ? userList : state.userSearchList;
@@ -128,10 +134,7 @@ function UserManagement() {
             <td>{user.soDt}</td>
             <td>
               <button
-                onClick={async () => {
-                  await deleteUserAction(user.taiKhoan);
-                  dispatch(getUserListAction());
-                }}
+                onClick={() => handleDeleteUser(user)}
                 className='btn btn-danger m-1'>
                 Xóa
               </button>
@@ -152,7 +155,7 @@ function UserManagement() {
           value={state.findUserInput}
           onChange={handleInput}
         />
-        <button type='submit' className='searchBtn'>
+        <button type='submit' className='searchBtn' id='searchBtn'>
           Tìm
         </button>
       </form>

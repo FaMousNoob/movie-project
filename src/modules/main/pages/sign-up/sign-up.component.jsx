@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import './sign-up.component.scss';
 import Input from '../../components/input-field/input..component';
-import { useDispatch } from 'react-redux';
 import { signUpAction } from '../../../../store/actions/sign-up.action';
 
 function SignUp(props) {
-  //done the sign up, just need a pop up after sign up complete, the picture is in zalo
-  const dispatch = useDispatch();
+  const [state, setState] = useState({ signUpFail: false });
 
   const validate = Yup.object({
     hoTen: Yup.string()
@@ -30,14 +28,19 @@ function SignUp(props) {
       .email('Email không hợp lệ')
       .required('Email không để trống'),
     soDt: Yup.string()
-      .matches(/^\d{10}$/gm, 'số điện thoại không hợp lệ')
+      .matches(/^[0][0-9]{9}$/g, 'số điện thoại không hợp lệ')
       .required('số điện thoại không để trống'),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(signUpAction(values));
-    props.onClick();
-    props.handleSignUpSuccessOn();
+  const handleSubmit = async (values) => {
+    const data = await signUpAction(values);
+    if (data) {
+      props.onClick();
+      props.handleSignUpSuccessOn();
+      setState({ signUpFail: false });
+    } else {
+      setState({ signUpFail: true });
+    }
   };
 
   return (
@@ -69,6 +72,9 @@ function SignUp(props) {
         </div>
         <Input placeholder='Email' name='email' type='email' />
         <Input placeholder='Số điện thoại' name='soDt' type='text' />
+        <div className={state.signUpFail ? 'showSignUpFail' : 'notShow'}>
+          <p>Tài khoản hoặc email đã tồn tại</p>
+        </div>
         <button type='submit' className='SignUpSubmit'>
           ĐĂNG KÝ
         </button>

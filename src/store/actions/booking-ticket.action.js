@@ -6,7 +6,7 @@ export const getBookingChairListAction = (id) => async (dispatch) => {
     const res = await getChairListApi(id);
     dispatch({ type: GET_CHAIR_LIST, payload: res.data });
   } catch (error) {
-    return false;
+    console.log(error);
   }
 };
 
@@ -18,6 +18,6 @@ export const orderChairAction =
     try {
       await orderChairApi(maLichChieu, danhSachGhe);
     } catch (error) {
-      return false;
+console.log(error);
     }
   };

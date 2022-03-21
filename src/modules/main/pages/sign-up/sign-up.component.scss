@@ -59,6 +59,17 @@
     width: 100%;
     letter-spacing: 1px;
   }
+  .notShow {
+    display: none;
+  }
+
+  .showSignUpFail {
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: red;
+    }
+  }
 }
 
 @media screen and(min-width: $ipadWidth) {

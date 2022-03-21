@@ -65,10 +65,53 @@
       display: none;
     }
   }
+  .mainSearchMovieBox {
+    .mainSearchMovie {
+      display: none;
+      @extend .extendingInput;
+    }
+    .listMovieSearch {
+      position: relative;
+      .noneDisplay {
+        display: none;
+      }
+      ul {
+        border: 1px solid $fontLight;
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        .linkTo {
+          color: $fontDark;
+          text-decoration: none;
+          transition: color, 0.3s;
+          &:hover {
+            color: $secondary;
+          }
+        }
+        li {
+          white-space: nowrap;
+          overflow: hidden;
+          border-bottom: 1px dotted $fontLight;
+          position: relative;
+          font-size: 0.875rem;
+          width: 250px;
+          padding: 5px 10px;
+          background-color: #fff;
 
-  .mainSearchMovie {
-    display: none;
-    @extend .extendingInput;
+          &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            transform: translateY(-50%);
+            height: 80%;
+            width: 2px;
+            background: $secondary;
+          }
+        }
+      }
+    }
   }
 
   .navbarRight {
@@ -130,6 +173,7 @@
 
     .dropDownMenu {
       button .NavBtn {
+        // margin: 20px 20px 0 0;
         padding: 10px 15px;
         font-size: 1.6rem;
         color: $fontLight;
@@ -191,8 +235,10 @@
     .logoContain {
       width: 350px;
     }
-    .mainSearchMovie {
-      display: block;
+    .mainSearchMovieBox {
+      .mainSearchMovie {
+        display: block;
+      }
     }
     .navbarRight {
       .signOutBtn {
@@ -212,9 +258,10 @@
     .logoContain {
       width: 430px;
     }
-
-    .mainSearchMovie {
-      margin-right: 200px;
+    .mainSearchMovieBox {
+      .mainSearchMovie {
+        margin-right: 200px;
+      }
     }
 
     .navbarRight {

@@ -33,6 +33,7 @@ export const deleteMovieAction = async (maPhim) => {
     await deleteMovieApi(maPhim);
   } catch (error) {
     localStorage.setItem('adminUserFailed', '{"user":"failed"}');
+    console.log(error);
   }
 };
 
@@ -43,6 +44,7 @@ export const uploadMovieAction = async (phim) => {
     localStorage.setItem('adminUserCreated', '{"user":"success"}');
   } catch (error) {
     localStorage.setItem('adminUserFailed', '{"user":"failed"}');
+    console.log(error);
   }
 };
 
@@ -52,5 +54,6 @@ export const createTheaterAction = async (theater) => {
     localStorage.setItem('createTheaterSuccess', '{"user":"success"}');
   } catch (error) {
     localStorage.setItem('createTheaterFail', '{"user":"success"}');
+    console.log(error);
   }
 };

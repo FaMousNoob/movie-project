@@ -1,9 +1,10 @@
 import { signUpApi } from '../../api/sign-up.api';
 
-export const signUpAction = (user) => async (dispatch) => {
+export const signUpAction = async (user) => {
   try {
-    await signUpApi(user);
+    const res = await signUpApi(user);
+    return res.data;
   } catch (error) {
-    return false;
+    console.log(error);
   }
 };

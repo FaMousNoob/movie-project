@@ -44,16 +44,11 @@ function MovieManagement() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const listMovieSearch = [];
-    movieList.forEach((movie) => {
-      if (
-        movie.tenPhim.toLowerCase().includes(state.findMovieInput.toLowerCase())
-      ) {
-        listMovieSearch.push(movie);
-      }
-    });
-    setState({ ...state, movieSearchList: listMovieSearch, pageRender: 0 });
-    if (listMovieSearch.length === 0) {
+    const result = movieList.filter((movie) =>
+      movie.tenPhim.toLowerCase().includes(state.findMovieInput.toLowerCase())
+    );
+    setState({ ...state, movieSearchList: result, pageRender: 0 });
+    if (result.length === 0) {
       localStorage.setItem('searchFailed', '{"user":"failed"}');
       localStorage.setItem('adminUserFailed', '{"user":"failed"}');
     }

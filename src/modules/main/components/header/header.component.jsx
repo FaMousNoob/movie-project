@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
 import './header.component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showLoginSignUpAction } from '../../../../store/actions/login-sign-up.action';
 
 function Header() {
   //drop down menu in phone screen
-  const [activeDropDown, setactiveDropDown] = useState({ isTrueOrNot: false });
+  const [state, setState] = useState({
+    activeDropDown: false,
+    searchMovieValue: '',
+  });
   const dispatch = useDispatch();
   const handleDropDown = () => {
-    setactiveDropDown({
-      ...activeDropDown,
-      isTrueOrNot: !activeDropDown.isTrueOrNot,
+    setState({
+      ...state,
+      activeDropDown: !state.activeDropDown,
     });
+  };
+
+  const movieList = useSelector((state) => state.movie.movieList);
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setState({ ...state, searchMovieValue: value });
+    console.log(state.searchMovieValue);
+  };
+
+  const handleShowMovieSearch = () => {
+    const result = movieList?.filter((movie) =>
+      movie.tenPhim.toLowerCase().includes(state.searchMovieValue.toLowerCase())
+    );
+    return result.map((movie, index) => (
+      <Link
+        key={index}
+        to={`/movie-detail/${movie.maPhim}`}
+        className='linkTo'
+        onClick={() => {
+          setState({ ...state, searchMovieValue: '' });
+        }}>
+        <li>{movie.tenPhim}</li>
+      </Link>
+    ));
   };
 
   //logout function
@@ -99,22 +128,33 @@ function Header() {
             <img src='/images/galaxy-logo.png' alt='' className='navLogo' />
           </a>
         </div>
-        <div className='mainSearchMovie'>
-          <FontAwesomeIcon
-            icon={solid('magnifying-glass')}
-            className='magnifying'
-          />
-          <input type='text' placeholder='Tìm tên phim' />
+        <div className='mainSearchMovieBox'>
+          <div className='mainSearchMovie'>
+            <FontAwesomeIcon
+              icon={solid('magnifying-glass')}
+              className='magnifying'
+            />
+            <input
+              value={state.searchMovieValue}
+              onChange={handleChange}
+              type='text'
+              placeholder='Tìm tên phim'
+            />
+          </div>
+          <div className='listMovieSearch'>
+            <ul className={state.searchMovieValue === '' ? 'noneDisplay' : ''}>
+              {handleShowMovieSearch()}
+            </ul>
+          </div>
         </div>
         <div className='navbarRight'>
           {loginOrSignOutBtn()}
           <div
             className={
-              'dropDownMenu ' +
-              (activeDropDown.isTrueOrNot ? 'activeDropDown' : '')
+              'dropDownMenu ' + (state.activeDropDown ? 'activeDropDown' : '')
             }>
             <button onClick={handleDropDown}>
-              {activeDropDown.isTrueOrNot ? (
+              {state.activeDropDown ? (
                 <FontAwesomeIcon
                   icon={solid('xmark')}
                   className='NavBtn xMark'
@@ -125,17 +165,8 @@ function Header() {
             </button>
             <ul
               className={
-                activeDropDown.isTrueOrNot ? 'activeUlDrop' : 'deactiveUlDrop'
+                state.activeDropDown ? 'activeUlDrop' : 'deactiveUlDrop'
               }>
-              <li>
-                <div className='searchMovieInput'>
-                  <input type='text' placeholder='Tìm tên phim' />
-                  <FontAwesomeIcon
-                    icon={solid('magnifying-glass')}
-                    className='magnifying'
-                  />
-                </div>
-              </li>
               <li onClick={handleDropDown}>
                 <NavLink className='navLink' to='/booking'>
                   MUA VÉ

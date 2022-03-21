@@ -24,7 +24,9 @@ function LoginSignUp(props) {
   return (
     <section>
       <div
-        onClick={() => dispatch(showLoginSignUpAction(false))}
+        onClick={() => {
+          dispatch(showLoginSignUpAction(false));
+        }}
         className={
           'loginContain ' +
           (showComponentOrNot ? 'isShowTitleLogin' : 'NotShowTitleLogin')
@@ -58,7 +60,9 @@ function LoginSignUp(props) {
 
         <button
           className='loginX'
-          onClick={() => dispatch(showLoginSignUpAction(false))}>
+          onClick={() => {
+            dispatch(showLoginSignUpAction(false));
+          }}>
           <FontAwesomeIcon icon={solid('xmark')} className='xFont' />
         </button>
         {isLoginOrSignUp.loginOrSignUp ? (
